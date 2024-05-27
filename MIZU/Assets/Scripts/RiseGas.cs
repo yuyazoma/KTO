@@ -7,7 +7,7 @@ public class RiseGas : MonoBehaviour
     public Transform targetObject; // è„Ç…óàÇΩÇÁè„è∏Ç∑ÇÈëŒè€ï®
     public float riseSpeed = 5f;   // è„è∏ë¨ìx
     public float riseHeight = 30f;  // è„è∏Ç∑ÇÈçÇÇ≥
-    private bool isRising = false;
+    public bool isRising = false;
 
     public RotateObject rotateObjectScript;
 
@@ -32,7 +32,8 @@ public class RiseGas : MonoBehaviour
         if (isRising)
         {
             float step = riseSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + Vector3.up * riseHeight, step);
+            transform.position = Vector3.MoveTowards(
+                transform.position, transform.position + Vector3.up * riseHeight, step);
         }
     }
 }
