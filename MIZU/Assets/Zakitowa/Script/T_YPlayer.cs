@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class T_YPlayer : MonoBehaviour
 {
     public float speed = 5.0f; // プレイヤーの移動速度
 
