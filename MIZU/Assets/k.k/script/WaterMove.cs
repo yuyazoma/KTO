@@ -5,14 +5,15 @@ using UnityEngine;
 public class WaterMove : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float jumpForce = 5f;
-    public bool Mode = true; // true for Player 1 (WASD), false for Player 2 (Arrow keys)
+    public float jumpHeight = 5f; // ÉWÉÉÉìÉvÇÃçÇÇ≥
     private Rigidbody rb;
     private bool isGrounded = true;
+    private ChararCh chararCh; // Reference to the ChararCh script
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        chararCh = GetComponentInParent<ChararCh>();
     }
 
     void Update()
@@ -25,7 +26,7 @@ public class WaterMove : MonoBehaviour
     {
         float move = 0;
 
-        if (Mode) // Player 1
+        if (chararCh.Mode) // Player 1
         {
             if (Input.GetKey(KeyCode.D))
             {
@@ -53,11 +54,11 @@ public class WaterMove : MonoBehaviour
 
     void Jump()
     {
-        if (Mode) // Player 1
+        if (chararCh.Mode) // Player 1
         {
             if (Input.GetKeyDown(KeyCode.W) && isGrounded)
             {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                rb.velocity = new Vector3(rb.velocity.x, CalculateJumpSpeed(jumpHeight), rb.velocity.z);
                 isGrounded = false;
             }
         }
@@ -65,10 +66,15 @@ public class WaterMove : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
             {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                rb.velocity = new Vector3(rb.velocity.x, CalculateJumpSpeed(jumpHeight), rb.velocity.z);
                 isGrounded = false;
             }
         }
+    }
+
+    private float CalculateJumpSpeed(float jumpHeight)
+    {
+        return Mathf.Sqrt(2 * jumpHeight * Physics.gravity.magnitude);
     }
 
     private void OnCollisionEnter(Collision collision)
