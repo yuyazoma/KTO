@@ -344,6 +344,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "ff5bdcf7-2d39-4e19-8b94-9b6706bdb14b",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "KeyBoard",
                     "id": "d031788b-5efc-455a-a55c-4aca573e4930",
                     "path": "OneModifier",
