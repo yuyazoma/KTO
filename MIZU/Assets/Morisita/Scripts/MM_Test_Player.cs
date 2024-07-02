@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(MM_PlayerPhaseState))]
+
 public class MM_Test_Player: MonoBehaviour
 {
     [SerializeField]
