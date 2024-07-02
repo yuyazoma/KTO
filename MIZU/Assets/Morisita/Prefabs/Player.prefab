@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 282863604397256313}
   - component: {fileID: 1964636904812180566}
   - component: {fileID: 4269527086922749433}
-  - component: {fileID: 6489598699062353276}
+  - component: {fileID: -5598851994831873067}
   - component: {fileID: 2388713484992299827}
   m_Layer: 0
   m_Name: Player
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6489598699062353276}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Test_InputSystem_UnityEvent, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6489598699062353276}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Test_InputSystem_UnityEvent, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
     m_ActionName: Player/Jump[/Keyboard/w]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6489598699062353276}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Test_InputSystem_UnityEvent, Assembly-CSharp
         m_MethodName: OnStateChangeGas
         m_Mode: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
     m_ActionName: Player/StateChage_Gas[/Keyboard/shift,/Keyboard/f]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6489598699062353276}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Test_InputSystem_UnityEvent, Assembly-CSharp
         m_MethodName: OnStateChangeSolid
         m_Mode: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
     m_ActionName: Player/StateChage_Solid[/Keyboard/shift,/Keyboard/f]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6489598699062353276}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Test_InputSystem_UnityEvent, Assembly-CSharp
         m_MethodName: OnStateChangeLiquid
         m_Mode: 0
@@ -291,7 +291,7 @@ MonoBehaviour:
     m_ActionName: Player/StateChage_Liquid[/Keyboard/shift]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6489598699062353276}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Test_InputSystem_UnityEvent, Assembly-CSharp
         m_MethodName: OnStateChangeSlime
         m_Mode: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &6489598699062353276
+--- !u!114 &-5598851994831873067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -319,14 +319,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 9212248133941372242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ca770b4710ed554bab95f6bae9abcb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a26ba6dd05bc354288ed65982ad0835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _gravity: 10
   _JumpHeight: 10
   _playerMaterials:
-  - {fileID: 2100000, guid: 1d59752a329f42f4eb1a56ba9aaddde0, type: 2}
-  - {fileID: 2100000, guid: e3e165aa8989378488ee40e08ee70b83, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   pState: {fileID: 0}
 --- !u!114 &2388713484992299827
 MonoBehaviour:

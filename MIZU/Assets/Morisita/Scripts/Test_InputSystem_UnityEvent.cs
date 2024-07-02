@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(MM_PlayerPhaseState))]
 public class Test_InputSystem_UnityEvent : MonoBehaviour
 {
     [SerializeField]
@@ -42,7 +43,7 @@ public class Test_InputSystem_UnityEvent : MonoBehaviour
     private void Update()
     {
         transform.position += _velocity * Time.deltaTime;
-        print("Player:"+pState.GetState());
+        print("Player:" + pState.GetState());
     }
 
     private void FixedUpdate()
