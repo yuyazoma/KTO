@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "StateChange_Slime",
+                    "type": "Button",
+                    "id": "bad68fe9-7350-4e74-a577-fbb12f1d2594",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -359,7 +368,7 @@
                 {
                     "name": "binding",
                     "id": "1625f1fc-282b-41b2-86e4-ab272bb74b79",
-                    "path": "<Keyboard>/r",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -425,7 +434,7 @@
                 {
                     "name": "binding",
                     "id": "981e7ac9-ad30-4973-ba8b-e92724a4f88f",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -485,6 +494,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "StateChage_Liquid",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7890def6-783e-4688-8488-2d61699763a0",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "StateChange_Slime",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "959c96a5-3b86-4fe2-a20d-49f77a6e512c",
+                    "path": "<DualShockGamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "StateChange_Slime",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

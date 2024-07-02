@@ -7,10 +7,10 @@ public class PlayerPhaseState : MonoBehaviour
     public enum State
     {
         Init,
-        Liquid,
-        Gas,
-        Solid,
-        Slime,
+        Liquid, // …
+        Gas,    // ‹C‘Ì
+        Solid,  // ŒÅ‘Ì
+        Slime,  // ƒXƒ‰ƒCƒ€
     }
 
     private State m_state;
