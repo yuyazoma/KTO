@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
-public class Test_InputSystem_UnityEvent : MonoBehaviour
+public class MM_Test_Player: MonoBehaviour
 {
     [SerializeField]
     private float _gravity;
@@ -42,7 +42,7 @@ public class Test_InputSystem_UnityEvent : MonoBehaviour
     private void Update()
     {
         transform.position += _velocity * Time.deltaTime;
-        print("Player:"+pState.GetState());
+        print("Player:" + pState.GetState());
     }
 
     private void FixedUpdate()

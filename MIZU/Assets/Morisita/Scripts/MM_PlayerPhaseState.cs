@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPhaseState : MonoBehaviour
+public class MM_PlayerPhaseState : MonoBehaviour
 {
     public enum State
     {
@@ -15,12 +15,12 @@ public class PlayerPhaseState : MonoBehaviour
 
     private State m_state;
 
-    public PlayerPhaseState()
+    public MM_PlayerPhaseState()
     {
         m_state = State.Init;
     }
         
-    public void ChangeState(PlayerPhaseState.State state)
+    public void ChangeState(MM_PlayerPhaseState.State state)
     {
         m_state=state;
     }

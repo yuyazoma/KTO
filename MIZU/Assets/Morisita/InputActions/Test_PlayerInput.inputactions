@@ -511,7 +511,7 @@
                 {
                     "name": "",
                     "id": "959c96a5-3b86-4fe2-a20d-49f77a6e512c",
-                    "path": "<DualShockGamepad>/leftStick/down",
+                    "path": "<XInputController>/leftStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
