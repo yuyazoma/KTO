@@ -15,32 +15,34 @@ public class Test_InputSystem_UnityEvent : MonoBehaviour
 
     bool isOnGround = false;
 
-    Rigidbody rb;
+    Rigidbody _rb;
     PlayerInput _playerInput;
     MeshRenderer _meshRenderer;
-    PlayerPhaseState.State pState;
+    [SerializeField]
+    PlayerPhaseState pState;
 
     private Vector3 _velocity;
 
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
         _playerInput = GetComponent<PlayerInput>();
         _meshRenderer = GetComponent<MeshRenderer>();
-        pState = GetComponent<PlayerPhaseState.State>();
+        pState = GetComponent<PlayerPhaseState>();
 
         if (_playerInput.user.index == 0)
             _meshRenderer.material = _playerMaterials[0];
         else
             _meshRenderer.material = _playerMaterials[1];
 
-        pState = PlayerPhaseState.State.Liquid;
+        pState.ChangeState(PlayerPhaseState.State.Liquid);
     }
 
     private void Update()
     {
         transform.position += _velocity * Time.deltaTime;
+        print("Player:"+pState.GetState());
     }
 
     private void FixedUpdate()
@@ -50,7 +52,7 @@ public class Test_InputSystem_UnityEvent : MonoBehaviour
 
     void Gravity()
     {
-        rb.AddForce(new Vector3(0, -_gravity, 0), ForceMode.Force);
+        _rb.AddForce(new Vector3(0, -_gravity, 0), ForceMode.Force);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -90,7 +92,7 @@ public class Test_InputSystem_UnityEvent : MonoBehaviour
         if (!isOnGround) return;
 
 
-        rb.AddForce(new Vector3(0, _JumpHeight, 0), ForceMode.VelocityChange);
+        _rb.AddForce(new Vector3(0, _JumpHeight, 0), ForceMode.VelocityChange);
 
         print(callOnJumpCount++ + ":Jumpが押されました");
     }
@@ -103,8 +105,10 @@ public class Test_InputSystem_UnityEvent : MonoBehaviour
         if (!context.performed) return;
 
         // 水じゃなかったら受け付けない
-        if (pState != PlayerPhaseState.State.Liquid) return;
-        print("GAS");
+        if (pState.GetState() != PlayerPhaseState.State.Liquid) return;
+
+        pState.ChangeState(PlayerPhaseState.State.Gas);
+        print("GAS(気体)になりました");
     }
 
     /// <summary>
@@ -115,9 +119,11 @@ public class Test_InputSystem_UnityEvent : MonoBehaviour
         if (!context.performed) return;
 
         // 水じゃなかったら受け付けない
-        if (pState != PlayerPhaseState.State.Liquid) return;
+        if (pState.GetState() != PlayerPhaseState.State.Liquid) return;
 
-        print("SOLID");
+        pState.ChangeState(PlayerPhaseState.State.Solid);
+
+        print("SOLID(固体)になりました");
     }
     /// <summary>
     /// 液体へ変化
@@ -127,12 +133,13 @@ public class Test_InputSystem_UnityEvent : MonoBehaviour
         if (!context.performed) return;
 
         // 固体・気体・スライムじゃなかったら受け付けない
-        if (pState != PlayerPhaseState.State.Solid) return;
-        if (pState != PlayerPhaseState.State.Gas) return;
-        if (pState != PlayerPhaseState.State.Slime) return;
+        if (pState.GetState() == PlayerPhaseState.State.Liquid) return;
 
 
-        print("LIQUID");
+
+        pState.ChangeState(PlayerPhaseState.State.Liquid);
+
+        print("LIQUID(水)になりました");
     }
 
     /// <summary>
@@ -141,10 +148,13 @@ public class Test_InputSystem_UnityEvent : MonoBehaviour
     public void OnStateChangeSlime(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        // 水じゃなかったら受け付けない
-        if (pState != PlayerPhaseState.State.Liquid) return;
 
-        print("SLIME");
+        // 水じゃなかったら受け付けない
+        if (pState.GetState() != PlayerPhaseState.State.Liquid) return;
+
+        pState.ChangeState(PlayerPhaseState.State.Slime);
+
+        print("SLIME(スライム)になりました");
 
     }
 }
