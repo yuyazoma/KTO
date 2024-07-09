@@ -13,6 +13,8 @@ public class MM_Test_Player: MonoBehaviour
     [SerializeField]
     private float _JumpHeight;
     [SerializeField]
+    private float _MoveSpeed;
+    [SerializeField]
     private Material[] _playerMaterials = new Material[2];
 
     bool isOnGround = false;
@@ -79,7 +81,7 @@ public class MM_Test_Player: MonoBehaviour
         var axis = context.ReadValue<Vector2>();
 
         // 2D‚È‚Ì‚Å‰¡ˆÚ“®‚¾‚¯
-        _velocity = new Vector3(axis.x, 0, 0);
+        _velocity = new Vector3(axis.x*_MoveSpeed, 0, 0);
     }
     int callOnJumpCount = 0;
     public void OnJump(InputAction.CallbackContext context)
