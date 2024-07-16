@@ -61,15 +61,18 @@ public class MM_Test_Player: MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.CompareTag("Ground"))
         isOnGround = true;
     }
     private void OnCollisionStay(Collision collision)
     {
-        isOnGround = true;
+        if (collision.gameObject.CompareTag("Ground"))
+            isOnGround = true;
     }
     private void OnCollisionExit(Collision collision)
     {
-        isOnGround = false;
+        if (collision.gameObject.CompareTag("Ground"))
+            isOnGround = false;
     }
 
 
