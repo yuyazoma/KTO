@@ -13,13 +13,14 @@ public class MM_Test_Player: MonoBehaviour
     [SerializeField]
     private float _gravity;
     [SerializeField]
-    private float _JumpHeight;
+    private float _JumpPower;
     [SerializeField]
     private float _MoveSpeed;
     [SerializeField]
     private Material[] _playerMaterials = new Material[2];
 
     bool isOnGround = false;
+    bool isOnWater = false;
 
     Rigidbody _rb;
     PlayerInput _playerInput;
@@ -52,7 +53,7 @@ public class MM_Test_Player: MonoBehaviour
     {
         transform.position += _velocity * Time.deltaTime;
         Debug_Phasetext.text = "Player:" + pState.GetState();
-        print("Player:" + pState.GetState());
+        //print("Player:" + pState.GetState());
     }
 
     private void FixedUpdate()
@@ -86,28 +87,30 @@ public class MM_Test_Player: MonoBehaviour
     // publicにする必要がある
     public void OnMove(InputAction.CallbackContext context)
     {
+        // 固体の時水に触れてなかったら動けない
+        if(pState.GetState()==MM_PlayerPhaseState.State.Solid)
+            if (!isOnWater) return;
         // MoveActionの入力値を取得
         var axis = context.ReadValue<Vector2>();
 
         // 2Dなので横移動だけ
         _velocity = new Vector3(axis.x*_MoveSpeed, 0, 0);
     }
-    int callOnJumpCount = 0;
     public void OnJump(InputAction.CallbackContext context)
     {
         // 押した瞬間だけ反応する
         if (!context.performed) return;
-
-        // こっちでもいいけどif文の中になって見づらくなる
-        //if (context.performed)
-
         // 地面にいないなら跳べない
         if (!isOnGround) return;
+        // 水に触れていたら跳べない
+        if (isOnWater) return;
+        // 気体なら跳べない
+        if (pState.GetState() == MM_PlayerPhaseState.State.Gas) return;
 
 
-        _rb.AddForce(new Vector3(0, _JumpHeight, 0), ForceMode.VelocityChange);
+        _rb.AddForce(new Vector3(0, _JumpPower, 0), ForceMode.VelocityChange);
 
-        print(callOnJumpCount++ + ":Jumpが押されました");
+        print("Jumpが押されました");
     }
 
     /// <summary>
@@ -121,6 +124,11 @@ public class MM_Test_Player: MonoBehaviour
         if (pState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
 
         pState.ChangeState(MM_PlayerPhaseState.State.Gas);
+
+        // モデルを気体のやつに変える処理
+        //
+        //
+
         print("GAS(気体)になりました");
     }
 
@@ -136,6 +144,10 @@ public class MM_Test_Player: MonoBehaviour
 
         pState.ChangeState(MM_PlayerPhaseState.State.Solid);
 
+        // モデルを固体のやつに変える処理
+        //
+        //
+
         print("SOLID(固体)になりました");
     }
     /// <summary>
@@ -148,9 +160,11 @@ public class MM_Test_Player: MonoBehaviour
         // 固体・気体・スライムじゃなかったら受け付けない
         if (pState.GetState() == MM_PlayerPhaseState.State.Liquid) return;
 
-
-
         pState.ChangeState(MM_PlayerPhaseState.State.Liquid);
+
+        // モデルを水のやつに変える処理
+        //
+        //
 
         print("LIQUID(水)になりました");
     }
@@ -166,6 +180,10 @@ public class MM_Test_Player: MonoBehaviour
         if (pState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
 
         pState.ChangeState(MM_PlayerPhaseState.State.Slime);
+
+        // モデルをスライムのやつに変える処理
+        //
+        //
 
         print("SLIME(スライム)になりました");
 

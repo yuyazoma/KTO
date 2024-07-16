@@ -78,7 +78,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SolidModeChange",
+                    "name": "DisplaySolidModeChangeUI",
                     "type": "Button",
                     "id": "2981ebf7-3e17-4350-8211-c2fa4b2c3ae2",
                     "expectedControlType": "Button",
@@ -546,7 +546,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "SolidModeChange",
+                    "action": "DisplaySolidModeChangeUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -557,7 +557,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "SolidModeChange",
+                    "action": "DisplaySolidModeChangeUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2db23082-a681-4c73-9402-24e9efc09909",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "DisplaySolidModeChangeUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fed58969-f7a2-4e2f-b2c0-480159faee03",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "DisplaySolidModeChangeUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
