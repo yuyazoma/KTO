@@ -122,6 +122,8 @@ public class MM_Test_Player: MonoBehaviour
 
         // 重力を0にする
         nowGravity = 0;
+        // 空気抵抗を発生させる
+        _rb.drag = 10;
 
         // モデルを気体のやつに変える処理
         //
@@ -160,7 +162,10 @@ public class MM_Test_Player: MonoBehaviour
 
         _pState.ChangeState(MM_PlayerPhaseState.State.Liquid);
 
+        // 重力を通常に戻す
         nowGravity = _defaultGravity;
+        // 空気抵抗をなくす
+        _rb.drag = 0;
 
         // モデルを水のやつに変える処理
         //
