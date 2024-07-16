@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(MM_PlayerPhaseState))]
@@ -25,6 +27,9 @@ public class MM_Test_Player: MonoBehaviour
     [SerializeField]
     MM_PlayerPhaseState pState;
 
+    [SerializeField]
+    TextMeshProUGUI Debug_Phasetext;
+
     private Vector3 _velocity;
 
 
@@ -46,6 +51,7 @@ public class MM_Test_Player: MonoBehaviour
     private void Update()
     {
         transform.position += _velocity * Time.deltaTime;
+        Debug_Phasetext.text = "Player:" + pState.GetState();
         print("Player:" + pState.GetState());
     }
 
