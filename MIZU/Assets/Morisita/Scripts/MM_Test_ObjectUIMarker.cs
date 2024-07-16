@@ -37,6 +37,11 @@ public class MM_Test_ObjectUIMarker : MonoBehaviour
         _parentUI = _targetUI.parent.GetComponent<RectTransform>();
     }
 
+    private void Start()
+    {
+        _targetUI.gameObject.SetActive(false);
+    }
+
     // UIの位置を毎フレーム更新
     private void Update()
     {
@@ -56,11 +61,11 @@ public class MM_Test_ObjectUIMarker : MonoBehaviour
         var targetDir = targetWorldPos - cameraTransform.position;
 
         // 内積を使ってカメラ前方かどうかを判定
-        var isFront = Vector3.Dot(cameraDir, targetDir) > 0;
+        //var isFront = Vector3.Dot(cameraDir, targetDir) > 0;
 
         // カメラ前方ならUI表示、後方なら非表示
-        _targetUI.gameObject.SetActive(isFront);
-        if (!isFront) return;
+        //_targetUI.gameObject.SetActive(isFront);
+        //if (!isFront) return;
 
         // オブジェクトのワールド座標→スクリーン座標変換
         var targetScreenPos = _targetCamera.WorldToScreenPoint(targetWorldPos);
@@ -75,5 +80,15 @@ public class MM_Test_ObjectUIMarker : MonoBehaviour
 
         // RectTransformのローカル座標を更新
         _targetUI.localPosition = uiLocalPos;
+    }
+
+    public void UI_Display()
+    {
+        if (_targetUI == null) return;
+        _targetUI.gameObject.SetActive(true);
+        //if (!_targetUI.gameObject.activeSelf)
+        //    _targetUI.gameObject.SetActive(false);
+        //else
+        //    _targetUI.gameObject.SetActive(true);
     }
 }

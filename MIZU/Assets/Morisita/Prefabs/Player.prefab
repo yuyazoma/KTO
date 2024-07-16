@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gravity: 10
-  _JumpHeight: 10
+  _JumpPower: 6
   _MoveSpeed: 10
   _playerMaterials:
   - {fileID: 2100000, guid: 1d59752a329f42f4eb1a56ba9aaddde0, type: 2}
