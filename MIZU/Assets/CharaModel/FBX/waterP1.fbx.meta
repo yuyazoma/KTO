@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 89757ae076074884c8f6febe6624f943
+guid: ed10928b173e10745800ee60d4b239a8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,28 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: body1P
-    second: {fileID: 2100000, guid: 709f8177e3ed06c49a29a5e2ce4b6381, type: 2}
+      name: body2P
+    second: {fileID: 2100000, guid: a9f839ae93043614194e98f92fe5b6c1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: face1P
-    second: {fileID: 2100000, guid: 02b9acabf81c6694f859c26659a8d722, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: matuge2
-    second: {fileID: 2100000, guid: ef705a30d9055914f8436cf7f2aca63c, type: 2}
+      name: face2P
+    second: {fileID: 2100000, guid: f9b23e30f0969bd41807f68678438d2e, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: body
-    second: {fileID: 2800000, guid: 26135b3e136d8fb409c04374a2ed5313, type: 3}
+      name: body2
+    second: {fileID: 2800000, guid: 69482db913968f94b8dad41be3c13371, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: face
-    second: {fileID: 2800000, guid: b73c201d15edb4f4292e54bbb5e1c8bd, type: 3}
+      name: kamen2
+    second: {fileID: 2800000, guid: 3ad0b4ce6fff11c499509138606550f7, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

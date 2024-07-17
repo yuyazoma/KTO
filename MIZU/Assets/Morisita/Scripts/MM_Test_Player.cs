@@ -36,7 +36,7 @@ public class MM_Test_Player: MonoBehaviour
 
     private Vector3 _velocity;
 
-
+    private KK_PlayerModelSwitcher _modelSwitcher;
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -44,6 +44,7 @@ public class MM_Test_Player: MonoBehaviour
         _meshRenderer = GetComponent<MeshRenderer>();
         _pState = GetComponent<MM_PlayerPhaseState>();
         _groundCheck = GetComponent<MM_GroundCheck>();
+        _modelSwitcher = GetComponent<KK_PlayerModelSwitcher>(); // PlayerModelSwitcher コンポーネントを取得
 
         if (_playerInput.user.index == 0)
             _meshRenderer.material = _playerMaterials[0];
@@ -126,7 +127,7 @@ public class MM_Test_Player: MonoBehaviour
         _rb.drag = 10;
 
         // モデルを気体のやつに変える処理
-        //
+         _modelSwitcher.SwitchToModel(_modelSwitcher.gasModel);
         //
 
         print("GAS(気体)になりました");
@@ -145,7 +146,7 @@ public class MM_Test_Player: MonoBehaviour
         _pState.ChangeState(MM_PlayerPhaseState.State.Solid);
 
         // モデルを固体のやつに変える処理
-        //
+        _modelSwitcher.SwitchToModel(_modelSwitcher.solidModel);
         //
 
         print("SOLID(固体)になりました");
@@ -168,7 +169,7 @@ public class MM_Test_Player: MonoBehaviour
         _rb.drag = 0;
 
         // モデルを水のやつに変える処理
-        //
+        _modelSwitcher.SwitchToModel(_modelSwitcher.liquidModel);
         //
 
         print("LIQUID(水)になりました");
@@ -187,7 +188,7 @@ public class MM_Test_Player: MonoBehaviour
         _pState.ChangeState(MM_PlayerPhaseState.State.Slime);
 
         // モデルをスライムのやつに変える処理
-        //
+        _modelSwitcher.SwitchToModel(_modelSwitcher.slimeModel);
         //
 
         print("SLIME(スライム)になりました");
