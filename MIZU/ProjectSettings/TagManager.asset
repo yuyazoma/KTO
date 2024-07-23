@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Arm
+  - RightArm
+  - LeftArm
   layers:
   - Default
   - TransparentFX
@@ -14,8 +17,8 @@ TagManager:
   - UI
   - Ghost
   - slime
-  - 
-  - 
+  - JointTmp
+  - Player
   - 
   - 
   - 
