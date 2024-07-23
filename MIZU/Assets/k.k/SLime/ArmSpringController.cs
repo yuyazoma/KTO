@@ -40,14 +40,15 @@ public class ArmSpringController : MonoBehaviour
     private IEnumerator ChangeSpringValue()
     {
         float startValue = springJoint.spring;
-        float targetValue = 300f;
+        float targetValue = 100f;
         float elapsedTime = 0f;
-        float duration = 2f; // 2•b‚©‚¯‚Ä•Ï‰»
+        float duration = 1.5f; // 2•b‚©‚¯‚Ä•Ï‰»
 
         // 2•b‚©‚¯‚Ä™X‚É300‚É•Ï‰»
         while (elapsedTime < duration)
         {
-            springJoint.spring = Mathf.Lerp(startValue, targetValue, elapsedTime / duration);
+            float t = elapsedTime / duration;
+            springJoint.spring = Mathf.Lerp(startValue, targetValue, t);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -55,7 +56,7 @@ public class ArmSpringController : MonoBehaviour
         Debug.Log("SpringJoint ‚Ì Spring ’l‚ª 300 ‚Éİ’è‚³‚ê‚Ü‚µ‚½B");
 
         // 2•b‘Ò‹@
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1000f);
 
         // 0‚É–ß‚·
         springJoint.spring = 0f;

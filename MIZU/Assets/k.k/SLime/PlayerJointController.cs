@@ -39,7 +39,7 @@ public class PlayerJointController : MonoBehaviour
 
     private IEnumerator DisconnectAfterDelay()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         Destroy(characterJoint);
         OnConnectionStateChanged?.Invoke(false);
         Debug.Log("CharacterJoint‚ªíœ‚³‚ê‚Ü‚µ‚½");
