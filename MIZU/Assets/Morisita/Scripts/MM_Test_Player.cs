@@ -59,6 +59,7 @@ public class MM_Test_Player: MonoBehaviour
     private void Update()
     {
         transform.position += _velocity * Time.deltaTime;
+        if(!Debug_Phasetext)
         Debug_Phasetext.text = "Player:" + _pState.GetState();
         //print("Player:" + pState.GetState());
     }
