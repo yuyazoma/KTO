@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 794650264124279696}
   - component: {fileID: 8177895789730163831}
   - component: {fileID: 5144164559126851038}
+  - component: {fileID: 7542703045098807715}
   m_Layer: 0
   m_Name: SlimePrefab
   m_TagString: Untagged
@@ -133,3 +134,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7542703045098807715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333240550062199243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c98119fb048d8648afc9668035ba124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
