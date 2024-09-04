@@ -12,6 +12,9 @@ using UnityEngine.UI;
 public class MM_Test_Player: MonoBehaviour
 {
     [SerializeField]
+    [Header("デバッグモード")]
+    bool IS_DEBUGMODE = false;
+    [SerializeField]
     private float _defaultGravity;
     [SerializeField]
     private float nowGravity;
@@ -59,7 +62,7 @@ public class MM_Test_Player: MonoBehaviour
     private void Update()
     {
         transform.position += _velocity * Time.deltaTime;
-        if(!Debug_Phasetext)
+        if(Debug_Phasetext!=null)
         Debug_Phasetext.text = "Player:" + _pState.GetState();
         //print("Player:" + pState.GetState());
     }
@@ -127,8 +130,12 @@ public class MM_Test_Player: MonoBehaviour
         // 空気抵抗を発生させる
         _rb.drag = 10;
 
+        print("GAS(気体)になりました");
+
+        if (IS_DEBUGMODE)
+            return;
         // モデルを気体のやつに変える処理
-         _modelSwitcher.SwitchToModel(_modelSwitcher.gasModel);
+        _modelSwitcher.SwitchToModel(_modelSwitcher.gasModel);
         //
 
         print("GAS(気体)になりました");
@@ -146,6 +153,14 @@ public class MM_Test_Player: MonoBehaviour
 
         _pState.ChangeState(MM_PlayerPhaseState.State.Solid);
 
+
+        _velocity = Vector3.zero;
+        //_rb.angularVelocity = Vector3.zero;
+
+        print("SOLID(固体)になりました");
+
+        if (IS_DEBUGMODE)
+            return;
         // モデルを固体のやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.solidModel);
         //
@@ -169,6 +184,10 @@ public class MM_Test_Player: MonoBehaviour
         // 空気抵抗をなくす
         _rb.drag = 0;
 
+        print("LIQUID(水)になりました");
+
+        if (IS_DEBUGMODE)
+            return;
         // モデルを水のやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.liquidModel);
         //
@@ -188,6 +207,10 @@ public class MM_Test_Player: MonoBehaviour
 
         _pState.ChangeState(MM_PlayerPhaseState.State.Slime);
 
+        print("SLIME(スライム)になりました");
+
+        if (IS_DEBUGMODE)
+            return;
         // モデルをスライムのやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.slimeModel);
         //
