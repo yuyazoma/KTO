@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MM_PlayerPhaseState))]
+
 public class puddle_Script : MonoBehaviour
 {
 
@@ -9,9 +11,11 @@ public class puddle_Script : MonoBehaviour
     private bool isColliding = false;  //  オブジェクトが接触しているかのフラグ
     public float destroyTime = 2f;  //  オブジェクトが破壊される時間
 
+    MM_PlayerPhaseState _pState;
+
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("puddle"))
+        if(_pState.GetState() == MM_PlayerPhaseState.State.Liquid)
         {
             isColliding = true;
         }
