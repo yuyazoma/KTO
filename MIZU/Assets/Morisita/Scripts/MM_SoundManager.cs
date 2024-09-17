@@ -66,19 +66,24 @@ public class MM_SoundManager : MonoBehaviour
         audioClips[type] = clip;
     }
 
-    public void LoadSoundFromResources(SoundType type, string path)
-    {
-        AudioClip clip = Resources.Load<AudioClip>(path);
-        if (clip != null)
-        {
-            audioClips[type] = clip;
-        }
-        else
-        {
-            Debug.LogWarning($"オーディオクリップのパスが見つかりません。: {path}");
-        }
-    }
+    //public void LoadSoundFromResources(SoundType type, string path)
+    //{
+    //    AudioClip clip = Resources.Load<AudioClip>(path);
+    //    if (clip != null)
+    //    {
+    //        audioClips[type] = clip;
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning($"オーディオクリップのパスが見つかりません。: {path}");
+    //    }
+    //}
 
+    /// <summary>
+    /// SEを再生します
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="volume"></param>
     public void PlaySE(SoundType type, float volume = 1f)
     {
         if (audioClips.TryGetValue(type, out AudioClip clip))
