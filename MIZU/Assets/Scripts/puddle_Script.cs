@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MM_PlayerPhaseState))]
+
 public class puddle_Script : MonoBehaviour
 {
 
@@ -9,9 +11,13 @@ public class puddle_Script : MonoBehaviour
     private bool isColliding = false;  //  オブジェクトが接触しているかのフラグ
     public float destroyTime = 2f;  //  オブジェクトが破壊される時間
 
+    MM_PlayerPhaseState _pState;
+
+
+
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("puddle"))
+        if(_pState.GetState() == MM_PlayerPhaseState.State.Liquid && collision.gameObject.CompareTag("puddle"))
         {
             isColliding = true;
         }
@@ -19,7 +25,7 @@ public class puddle_Script : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.CompareTag("puddle"))
+        if(collision.gameObject.CompareTag("puddle") == false)
         {
             isColliding = false;
             contactTime = 0f;  //  離れたら接触時間をリセットする
@@ -29,7 +35,7 @@ public class puddle_Script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _pState = GetComponent<MM_PlayerPhaseState>();
     }
 
     // Update is called once per frame
