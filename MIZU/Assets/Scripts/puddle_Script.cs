@@ -13,9 +13,11 @@ public class puddle_Script : MonoBehaviour
 
     MM_PlayerPhaseState _pState;
 
+
+
     private void OnCollisionEnter(Collision collision)
     {
-        if(_pState.GetState() == MM_PlayerPhaseState.State.Liquid)
+        if(_pState.GetState() == MM_PlayerPhaseState.State.Liquid && collision.gameObject.CompareTag("puddle"))
         {
             isColliding = true;
         }
@@ -23,7 +25,7 @@ public class puddle_Script : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.CompareTag("puddle"))
+        if(collision.gameObject.CompareTag("puddle") == false)
         {
             isColliding = false;
             contactTime = 0f;  //  —£‚ê‚½‚çÚGŠÔ‚ğƒŠƒZƒbƒg‚·‚é
@@ -33,7 +35,7 @@ public class puddle_Script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _pState = GetComponent<MM_PlayerPhaseState>();
     }
 
     // Update is called once per frame
