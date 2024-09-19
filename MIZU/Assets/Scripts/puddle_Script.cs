@@ -17,15 +17,16 @@ public class puddle_Script : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(_pState.GetState() == MM_PlayerPhaseState.State.Liquid && collision.gameObject.CompareTag("puddle"))
+        if(collision.gameObject.CompareTag("puddle"))
         {
             isColliding = true;
+            Debug.Log("OK");
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.CompareTag("puddle") == false)
+        if(collision.gameObject.CompareTag("puddle"))
         {
             isColliding = false;
             contactTime = 0f;  //  離れたら接触時間をリセットする
@@ -41,14 +42,25 @@ public class puddle_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //  puddleと接触した時
         if(isColliding)
         {
-            contactTime += Time.deltaTime;
-
-            if(contactTime >= destroyTime)
+            //  プレイヤーの状態がLiquidの時
+            if(_pState.GetState() == MM_PlayerPhaseState.State.Liquid)
             {
-                Destroy(gameObject);
+                contactTime += Time.deltaTime;
+                Debug.Log("Count");
+
+                if (contactTime >= destroyTime)
+                {
+                    Destroy(gameObject);
+                }
             }
+            else  //  プレイヤーの状態がLiquid以外の時
+            {
+                contactTime = 0f;
+            }
+
         }
     }
 }
