@@ -8,6 +8,8 @@ TagManager:
   - Arm
   - RightArm
   - LeftArm
+  - puddle
+  - goal
   layers:
   - Default
   - TransparentFX
