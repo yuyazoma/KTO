@@ -71,6 +71,10 @@ public class MM_Test_Player : MonoBehaviour
     {
         Gravity();
         GroundCheck();
+        if(isOnWater)
+        {
+            StartCoroutine(IsPuddleCollisionDeadCount());
+        }    
     }
 
     void Gravity()
@@ -88,6 +92,8 @@ public class MM_Test_Player : MonoBehaviour
     // publicにする必要がある
     public void OnMove(InputAction.CallbackContext context)
     {
+        // 気体なら横移動はできない
+        if (_pState.GetState() == MM_PlayerPhaseState.State.Gas) return;
         // 固体の時水に触れてなかったら動けない
         if (_pState.GetState() == MM_PlayerPhaseState.State.Solid)
             if (!isOnWater) return;
@@ -96,6 +102,18 @@ public class MM_Test_Player : MonoBehaviour
 
         // 2Dなので横移動だけ
         _velocity = new Vector3(axis.x * _MoveSpeed, 0, 0);
+    }
+    public void OnGasMove(InputAction.CallbackContext context)
+    {
+        // 気体でなければ縦移動はできない
+        if (_pState.GetState() != MM_PlayerPhaseState.State.Gas)
+            return;
+
+        // MoveActionの入力値を取得
+        var axis = context.ReadValue<Vector2>();
+
+        // 気体の時は縦移動だけ
+        _velocity = new Vector3(0, axis.y * _MoveSpeed, 0);
     }
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -114,6 +132,17 @@ public class MM_Test_Player : MonoBehaviour
         print("Jumpが押されました");
     }
 
+    // 水に触れたら死亡までのカウントを開始
+    private IEnumerator IsPuddleCollisionDeadCount()
+    {
+        float t = 0;
+
+        while (isOnWater)
+        { 
+            t+=Time.deltaTime;
+            yield return null;
+        } 
+    }
     /// <summary>
     /// 気体へ変化
     /// </summary>
