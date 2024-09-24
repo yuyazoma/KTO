@@ -1989,10 +1989,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -5598851994831873067, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
-      propertyPath: IS_DEBUGMODE
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5598851994831873067, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
       propertyPath: Debug_Phasetext
       value: 
       objectReference: {fileID: 8878564429080858692}
@@ -2036,34 +2032,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4269527086922749433, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269527086922749433, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269527086922749433, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 6411731067929942060}
-    - target: {fileID: 4269527086922749433, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269527086922749433, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnGasMove
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269527086922749433, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: MM_Test_Player, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269527086922749433, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 4744324138728975715, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
       propertyPath: _targetUI
       value: 
@@ -2076,10 +2044,6 @@ PrefabInstance:
       propertyPath: firstbutton
       value: 
       objectReference: {fileID: 8048164947002230624}
-    - target: {fileID: 7282366096483478251, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
-      propertyPath: m_Size.x
-      value: 0.9
-      objectReference: {fileID: 0}
     - target: {fileID: 9212248133941372242, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2089,17 +2053,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
---- !u!114 &6411731067929942060 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -5598851994831873067, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
-  m_PrefabInstance: {fileID: 6411731067929942054}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a26ba6dd05bc354288ed65982ad0835, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6837259072482492797
 MonoBehaviour:
   m_ObjectHideFlags: 0
