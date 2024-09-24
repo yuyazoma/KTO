@@ -71,10 +71,8 @@ public class MM_Test_Player : MonoBehaviour
     {
         Gravity();
         GroundCheck();
-        if(isOnWater)
-        {
-            StartCoroutine(IsPuddleCollisionDeadCount());
-        }    
+
+        PlayerStateFunc();
     }
 
     void Gravity()
@@ -88,6 +86,57 @@ public class MM_Test_Player : MonoBehaviour
         isOnWater = _groundCheck.IsPuddle();
     }
 
+    private void PlayerStateFunc()
+    {
+        switch (_pState.GetState())
+        {
+            case MM_PlayerPhaseState.State.Gas    : PlayerGasStateFunc();   break;
+            case MM_PlayerPhaseState.State.Solid  : PlayerSolidStateFunc(); break;
+            case MM_PlayerPhaseState.State.Liquid : PlayerLiquidStateFunc();break;
+            case MM_PlayerPhaseState.State.Slime  : PlayerSlimeStateFunc(); break;
+            default: Debug.LogError($"エラー、プレイヤーのステートが{_pState.GetState()}になっています"); break;
+        }
+    }
+
+    private void PlayerGasStateFunc()
+    {
+
+    }
+    private void PlayerSolidStateFunc()
+    {
+
+    }
+    private void PlayerLiquidStateFunc()
+    { 
+        StartCoroutine(IsPuddleCollisionDeadCount());
+    }
+    // 水に触れたら死亡までのカウントを開始
+    private IEnumerator IsPuddleCollisionDeadCount()
+    {
+        float contactTime = 0f;
+        float destroyTime = 2f;
+
+        while (isOnWater)
+        {
+            contactTime += Time.deltaTime;
+            yield return null;
+            if (contactTime >= destroyTime)
+            {
+                Death();
+            }
+            // print($"{nameof(contactTime)}:{contactTime}");
+        }
+    }
+    private void PlayerSlimeStateFunc()
+    {
+
+    }
+
+
+    private void Death()
+    {
+        Destroy(gameObject);
+    }
     // メソッド名は何でもOK
     // publicにする必要がある
     public void OnMove(InputAction.CallbackContext context)
@@ -132,17 +181,7 @@ public class MM_Test_Player : MonoBehaviour
         print("Jumpが押されました");
     }
 
-    // 水に触れたら死亡までのカウントを開始
-    private IEnumerator IsPuddleCollisionDeadCount()
-    {
-        float t = 0;
-
-        while (isOnWater)
-        { 
-            t+=Time.deltaTime;
-            yield return null;
-        } 
-    }
+ 
     /// <summary>
     /// 気体へ変化
     /// </summary>
