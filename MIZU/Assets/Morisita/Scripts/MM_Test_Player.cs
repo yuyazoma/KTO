@@ -71,6 +71,8 @@ public class MM_Test_Player : MonoBehaviour
     {
         Gravity();
         GroundCheck();
+
+        PlayerStateFunc();
     }
 
     void Gravity()
@@ -84,10 +86,63 @@ public class MM_Test_Player : MonoBehaviour
         isOnWater = _groundCheck.IsPuddle();
     }
 
+    private void PlayerStateFunc()
+    {
+        switch (_pState.GetState())
+        {
+            case MM_PlayerPhaseState.State.Gas    : PlayerGasStateFunc();   break;
+            case MM_PlayerPhaseState.State.Solid  : PlayerSolidStateFunc(); break;
+            case MM_PlayerPhaseState.State.Liquid : PlayerLiquidStateFunc();break;
+            case MM_PlayerPhaseState.State.Slime  : PlayerSlimeStateFunc(); break;
+            default: Debug.LogError($"エラー、プレイヤーのステートが{_pState.GetState()}になっています"); break;
+        }
+    }
+
+    private void PlayerGasStateFunc()
+    {
+
+    }
+    private void PlayerSolidStateFunc()
+    {
+
+    }
+    private void PlayerLiquidStateFunc()
+    { 
+        StartCoroutine(IsPuddleCollisionDeadCount());
+    }
+    // 水に触れたら死亡までのカウントを開始
+    private IEnumerator IsPuddleCollisionDeadCount()
+    {
+        float contactTime = 0f;
+        float destroyTime = 2f;
+
+        while (isOnWater)
+        {
+            contactTime += Time.deltaTime;
+            yield return null;
+            if (contactTime >= destroyTime)
+            {
+                Death();
+            }
+            // print($"{nameof(contactTime)}:{contactTime}");
+        }
+    }
+    private void PlayerSlimeStateFunc()
+    {
+
+    }
+
+
+    private void Death()
+    {
+        Destroy(gameObject);
+    }
     // メソッド名は何でもOK
     // publicにする必要がある
     public void OnMove(InputAction.CallbackContext context)
     {
+        // 気体なら横移動はできない
+        if (_pState.GetState() == MM_PlayerPhaseState.State.Gas) return;
         // 固体の時水に触れてなかったら動けない
         if (_pState.GetState() == MM_PlayerPhaseState.State.Solid)
             if (!isOnWater) return;
@@ -96,6 +151,18 @@ public class MM_Test_Player : MonoBehaviour
 
         // 2Dなので横移動だけ
         _velocity = new Vector3(axis.x * _MoveSpeed, 0, 0);
+    }
+    public void OnGasMove(InputAction.CallbackContext context)
+    {
+        // 気体でなければ縦移動はできない
+        if (_pState.GetState() != MM_PlayerPhaseState.State.Gas)
+            return;
+
+        // MoveActionの入力値を取得
+        var axis = context.ReadValue<Vector2>();
+
+        // 気体の時は縦移動だけ
+        _velocity = new Vector3(0, axis.y * _MoveSpeed, 0);
     }
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -114,6 +181,7 @@ public class MM_Test_Player : MonoBehaviour
         print("Jumpが押されました");
     }
 
+ 
     /// <summary>
     /// 気体へ変化
     /// </summary>

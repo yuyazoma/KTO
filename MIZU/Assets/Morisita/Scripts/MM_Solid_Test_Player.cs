@@ -82,6 +82,8 @@ public class MM_Solid_Test_Player: MonoBehaviour
     // public‚É‚·‚é•K—v‚ª‚ ‚é
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (_pState.GetState() == MM_PlayerPhaseState.State.Gas)
+            return;
         // ŒÅ‘Ì‚Ì…‚ÉG‚ê‚Ä‚È‚©‚Á‚½‚ç“®‚¯‚È‚¢
         if(_pState.GetState()==MM_PlayerPhaseState.State.Solid)
             if (!isOnWater) return;
@@ -91,6 +93,8 @@ public class MM_Solid_Test_Player: MonoBehaviour
         // 2D‚È‚Ì‚Å‰¡ˆÚ“®‚¾‚¯
         _velocity = new Vector3(axis.x*_MoveSpeed, 0, 0);
     }
+
+
     public void OnJump(InputAction.CallbackContext context)
     {
         // ‰Ÿ‚µ‚½uŠÔ‚¾‚¯”½‰‚·‚é
