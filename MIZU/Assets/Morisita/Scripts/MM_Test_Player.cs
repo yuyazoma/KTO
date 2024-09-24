@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(MM_PlayerPhaseState))]
-[RequireComponent (typeof(MM_GroundCheck))]
+[RequireComponent(typeof(MM_GroundCheck))]
 
-public class MM_Test_Player: MonoBehaviour
+public class MM_Test_Player : MonoBehaviour
 {
     [SerializeField]
     [Header("デバッグモード")]
@@ -62,8 +62,8 @@ public class MM_Test_Player: MonoBehaviour
     private void Update()
     {
         transform.position += _velocity * Time.deltaTime;
-        if(Debug_Phasetext!=null)
-        Debug_Phasetext.text = "Player:" + _pState.GetState();
+        if (Debug_Phasetext != null)
+            Debug_Phasetext.text = "Player:" + _pState.GetState();
         //print("Player:" + pState.GetState());
     }
 
@@ -81,6 +81,7 @@ public class MM_Test_Player: MonoBehaviour
     private void GroundCheck()
     {
         isOnGround = _groundCheck.IsGround();
+        isOnWater = _groundCheck.IsPuddle();
     }
 
     // メソッド名は何でもOK
@@ -88,13 +89,13 @@ public class MM_Test_Player: MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         // 固体の時水に触れてなかったら動けない
-        if(_pState.GetState()==MM_PlayerPhaseState.State.Solid)
+        if (_pState.GetState() == MM_PlayerPhaseState.State.Solid)
             if (!isOnWater) return;
         // MoveActionの入力値を取得
         var axis = context.ReadValue<Vector2>();
 
         // 2Dなので横移動だけ
-        _velocity = new Vector3(axis.x*_MoveSpeed, 0, 0);
+        _velocity = new Vector3(axis.x * _MoveSpeed, 0, 0);
     }
     public void OnJump(InputAction.CallbackContext context)
     {
