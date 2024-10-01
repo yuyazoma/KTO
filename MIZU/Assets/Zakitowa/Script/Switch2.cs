@@ -3,10 +3,10 @@ using System.Collections;
 
 public class SwitchPlatform : MonoBehaviour
 {
-    public GameObject platform; // 大きくしたい足場オブジェクトをここにアサインします
+    public GameObject platform; // ?????????????????????????
     private Vector3 originalScale;
-    public Vector3 enlargedScale = new Vector3(2, 2, 2); // 大きくしたいサイズを設定します
-    public float shrinkDelay = 2.0f; // 足場が元のサイズに戻るまでの遅延時間
+    public Vector3 enlargedScale = new Vector3(2, 2, 2); // ???????????????
+    public float shrinkDelay = 2.0f; // ??????????????????
 
     private Coroutine shrinkCoroutine;
 
@@ -18,7 +18,8 @@ public class SwitchPlatform : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    // 3D??OnTriggerEnter????
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -30,7 +31,8 @@ public class SwitchPlatform : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    // 3D??OnTriggerExit????
+    void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
