@@ -19,8 +19,17 @@ public class PlayerRespawn : MonoBehaviour
         }
     }
 
-    // スタート位置に戻す処理
-    void Respawn()
+    void OnCollisionEnter(Collision collision)
+    {
+        // 障害物に衝突したとき
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Respawn();
+        }
+    }
+
+        // スタート位置に戻す処理
+        void Respawn()
     {
         transform.position = startPosition;
     }
