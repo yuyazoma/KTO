@@ -7,7 +7,7 @@ public class PlayerJointController : MonoBehaviour
     private CharacterJoint characterJoint;
     public static event Action<bool> OnConnectionStateChanged;
 
-    // 接続後のクールダウン時間（秒）
+    // ?????????N?[???_?E???????i?b?j
     public float cooldownTime = 3f;
     private bool canConnect = true;
 
@@ -22,7 +22,7 @@ public class PlayerJointController : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Arm オブジェクトに Rigidbody がありません。");
+                Debug.LogWarning("Arm ?I?u?W?F?N?g?? Rigidbody ?????????????B");
             }
         }
     }
@@ -32,7 +32,7 @@ public class PlayerJointController : MonoBehaviour
         characterJoint = gameObject.AddComponent<CharacterJoint>();
         characterJoint.connectedBody = connectedBody;
         OnConnectionStateChanged?.Invoke(true);
-        Debug.Log("プレイヤーと Arm オブジェクトがジョイントで接続されました。");
+        Debug.Log("?v???C???[?? Arm ?I?u?W?F?N?g???W???C???g?????????????????B");
         StartCoroutine(DisconnectAfterDelay());
         StartCoroutine(CooldownTimer());
     }
@@ -42,7 +42,7 @@ public class PlayerJointController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         Destroy(characterJoint);
         OnConnectionStateChanged?.Invoke(false);
-        Debug.Log("CharacterJointが削除されました");
+        Debug.Log("CharacterJoint????????????????");
     }
 
     private IEnumerator CooldownTimer()
@@ -50,6 +50,6 @@ public class PlayerJointController : MonoBehaviour
         canConnect = false;
         yield return new WaitForSeconds(cooldownTime);
         canConnect = true;
-        Debug.Log("接続可能になりました");
+        Debug.Log("???????????????????");
     }
 }
