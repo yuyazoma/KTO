@@ -5,16 +5,34 @@ using UnityEngine;
 
 public class goalDecisionScript : MonoBehaviour
 {
-    public bool isColliding = false;
+    public bool isGoal = false;
+    private int areaStay = 0;
     private void OnTriggerEnter(Collider other)
     {
-        //  tagがgoalだった時
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("goal");
-            isColliding = true;
-            Destroy(other.gameObject);
-        }
+        if (!other.CompareTag("Player")) return;  //  tagがPlayerでは無かった時
+        //  tagがPlayerだった時
+        areaStay++;
+        areaChack();
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+        areaStay--;
+    }
+
+    private void areaChack()
+    {
+        if (areaStay != 2) return;
+
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Player");  //  tagがPlayerのオブジェクトをを見つけて配列にする
+
+        Debug.Log("goal");
+        isGoal = true;
+        //  tagがPlayerのオブジェクトを全て消す
+        foreach (GameObject player in objects)
+        {
+            Destroy(player);
+        }
+    }
 }

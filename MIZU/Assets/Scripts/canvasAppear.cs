@@ -23,7 +23,7 @@ public class canvasAppear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (goalDecision.isColliding == true)
+        if (goalDecision.isGoal == true)
         {
             Debug.Log("appear");
             goalCanvasAppear();
