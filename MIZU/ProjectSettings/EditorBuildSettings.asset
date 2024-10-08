@@ -6,10 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/titleScene.unity
+    path: Assets/Scenes/main/titleScene.unity
     guid: 9145d29d6df853e4dac43af88d32414e
   - enabled: 1
-    path: Assets/Scenes/selectedScene.unity
+    path: Assets/Scenes/main/selectedScene.unity
     guid: bd347643fe68fcb4c9a7f914e0c6fb87
+  - enabled: 1
+    path: Assets/Scenes/main/stage gimic.unity
+    guid: 7ccedfef9c30d7349aec04514c265130
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 10007903a775fc943acd6940d9bb44f7, type: 2}
