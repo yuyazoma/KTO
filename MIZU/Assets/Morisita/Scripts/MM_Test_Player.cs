@@ -21,7 +21,17 @@ public class MM_Test_Player : MonoBehaviour
     [SerializeField]
     private float _JumpPower;
     [SerializeField]
-    private float _MoveSpeed;
+    private float _MovePower;
+    [SerializeField]
+    private float _LimitSpeed;
+    [SerializeField,Header("慣性力,-1~10")]
+    private float _InertiaPower;
+    [SerializeField]
+    private float _NowXSpeed;
+    [SerializeField]
+    private float _NowYSpeed;
+    [SerializeField]
+    private float _MaxY;
     [SerializeField]
     private Material[] _playerMaterials = new Material[2];
 
@@ -57,28 +67,73 @@ public class MM_Test_Player : MonoBehaviour
         _pState.ChangeState(MM_PlayerPhaseState.State.Liquid);
 
         nowGravity = _defaultGravity;
+
+        _InertiaPower= Mathf.Clamp(_InertiaPower,-1,10);
+
     }
 
     private void Update()
     {
-        transform.position += _velocity * Time.deltaTime;
         if (Debug_Phasetext != null)
             Debug_Phasetext.text = "Player:" + _pState.GetState();
-        //print("Player:" + pState.GetState());
+        PlayerStateUpdateFunc();
+
+
     }
 
     private void FixedUpdate()
     {
         Gravity();
         GroundCheck();
-
-        PlayerStateFunc();
+        Move();
+        if(_MaxY<transform.position.y)
+        _MaxY = transform.position.y;
+        if (isOnGround)
+            _MaxY = 0;
     }
 
     void Gravity()
     {
-        _rb.AddForce(new Vector3(0, -nowGravity, 0), ForceMode.Force);
+        _rb.AddForce(new Vector3(0, -nowGravity, 0), ForceMode.Acceleration);
     }
+
+    void Move()
+    {
+        var nowXSpeed = Mathf.Sqrt(Mathf.Pow(_rb.velocity.x, 2));
+        var nowYSpeed = Mathf.Sqrt(Mathf.Pow(_rb.velocity.y, 2));
+        _NowXSpeed = nowXSpeed;
+        _NowYSpeed = nowYSpeed;
+
+        // ガスの時の縦移動
+        if(_pState.GetState()!=MM_PlayerPhaseState.State.Gas)
+        {
+            if (_velocity.x != 0)
+                _rb.AddForce(_velocity, ForceMode.Acceleration);
+            else
+                _rb.AddForce(new Vector3(-_rb.velocity.x * _InertiaPower, _rb.velocity.y, _rb.velocity.z), ForceMode.Acceleration);
+        }
+        // それ以外の時の横移動
+        else
+        {
+            if (_velocity.y != 0)
+                _rb.AddForce(_velocity, ForceMode.Acceleration);
+            else
+                _rb.AddForce(new Vector3(_rb.velocity.x, -_rb.velocity.y * _InertiaPower, _rb.velocity.z), ForceMode.Acceleration);
+        }
+  
+        if (nowXSpeed > _LimitSpeed)
+        {
+            _rb.velocity = new Vector3(_rb.velocity.x / (nowXSpeed / _LimitSpeed), _rb.velocity.y, _rb.velocity.z);
+            print("LimitedXSpeed");
+        }
+        if (nowYSpeed > _LimitSpeed)
+        {
+            _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y / (nowYSpeed / _LimitSpeed), _rb.velocity.z);
+            print("LimitedYSpeed");
+        }
+
+    }
+
 
     private void GroundCheck()
     {
@@ -86,48 +141,31 @@ public class MM_Test_Player : MonoBehaviour
         isOnWater = _groundCheck.IsPuddle();
     }
 
-    private void PlayerStateFunc()
+    private void PlayerStateUpdateFunc()
     {
         switch (_pState.GetState())
         {
-            case MM_PlayerPhaseState.State.Gas    : PlayerGasStateFunc();   break;
-            case MM_PlayerPhaseState.State.Solid  : PlayerSolidStateFunc(); break;
-            case MM_PlayerPhaseState.State.Liquid : PlayerLiquidStateFunc();break;
-            case MM_PlayerPhaseState.State.Slime  : PlayerSlimeStateFunc(); break;
+            case MM_PlayerPhaseState.State.Gas: PlayerGasStateUpdateFunc(); break;
+            case MM_PlayerPhaseState.State.Solid: PlayerSolidStateUpdateFunc(); break;
+            case MM_PlayerPhaseState.State.Liquid: PlayerLiquidStateUpdateFunc(); break;
+            case MM_PlayerPhaseState.State.Slime: PlayerSlimeStateUpdateFunc(); break;
             default: Debug.LogError($"エラー、プレイヤーのステートが{_pState.GetState()}になっています"); break;
         }
     }
 
-    private void PlayerGasStateFunc()
+    private void PlayerGasStateUpdateFunc()
     {
 
     }
-    private void PlayerSolidStateFunc()
+    private void PlayerSolidStateUpdateFunc()
     {
 
     }
-    private void PlayerLiquidStateFunc()
-    { 
+    private void PlayerLiquidStateUpdateFunc()
+    {
         StartCoroutine(IsPuddleCollisionDeadCount());
     }
-    // 水に触れたら死亡までのカウントを開始
-    private IEnumerator IsPuddleCollisionDeadCount()
-    {
-        float contactTime = 0f;
-        float destroyTime = 2f;
-
-        while (isOnWater)
-        {
-            contactTime += Time.deltaTime;
-            yield return null;
-            if (contactTime >= destroyTime)
-            {
-                Death();
-            }
-            // print($"{nameof(contactTime)}:{contactTime}");
-        }
-    }
-    private void PlayerSlimeStateFunc()
+    private void PlayerSlimeStateUpdateFunc()
     {
 
     }
@@ -150,7 +188,9 @@ public class MM_Test_Player : MonoBehaviour
         var axis = context.ReadValue<Vector2>();
 
         // 2Dなので横移動だけ
-        _velocity = new Vector3(axis.x * _MoveSpeed, 0, 0);
+        _velocity = new Vector3(axis.x * _MovePower, 0, 0);
+
+        print("Move");
     }
     public void OnGasMove(InputAction.CallbackContext context)
     {
@@ -162,7 +202,7 @@ public class MM_Test_Player : MonoBehaviour
         var axis = context.ReadValue<Vector2>();
 
         // 気体の時は縦移動だけ
-        _velocity = new Vector3(0, axis.y * _MoveSpeed, 0);
+        _velocity = new Vector3(0, axis.y * _MovePower, 0);
     }
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -175,13 +215,31 @@ public class MM_Test_Player : MonoBehaviour
         // 気体なら跳べない
         if (_pState.GetState() == MM_PlayerPhaseState.State.Gas) return;
 
+        _velocity = new Vector3(_velocity.x,0, 0);
 
         _rb.AddForce(new Vector3(0, _JumpPower, 0), ForceMode.VelocityChange);
 
         print("Jumpが押されました");
     }
 
- 
+
+    // 水に触れたら死亡までのカウントを開始
+    private IEnumerator IsPuddleCollisionDeadCount()
+    {
+        float contactTime = 0f;
+        float destroyTime = 2f;
+
+        while (isOnWater)
+        {
+            contactTime += Time.deltaTime;
+            yield return null;
+            if (contactTime >= destroyTime)
+            {
+                Death();
+            }
+            // print($"{nameof(contactTime)}:{contactTime}");
+        }
+    }
     /// <summary>
     /// 気体へ変化
     /// </summary>
