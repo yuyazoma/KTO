@@ -2306,12 +2306,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -5598851994831873067, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
+      propertyPath: _JumpPower
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -5598851994831873067, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
       propertyPath: _MovePower
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -5598851994831873067, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
       propertyPath: _MoveSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5598851994831873067, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
+      propertyPath: nowGravity
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -5598851994831873067, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
       propertyPath: _LimitSpeed
@@ -2325,6 +2333,10 @@ PrefabInstance:
       propertyPath: Debug_Phasetext
       value: 
       objectReference: {fileID: 8878564429080858692}
+    - target: {fileID: -5598851994831873067, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
+      propertyPath: _defaultGravity
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 282863604397256313, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
       propertyPath: m_Material
       value: 

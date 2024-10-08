@@ -90,12 +90,11 @@ public class MM_Test_Player : MonoBehaviour
         _MaxY = transform.position.y;
         if (isOnGround)
             _MaxY = 0;
-        print(_MaxY);
     }
 
     void Gravity()
     {
-        _rb.AddForce(new Vector3(0, -nowGravity, 0), ForceMode.Force);
+        _rb.AddForce(new Vector3(0, -nowGravity, 0), ForceMode.Acceleration);
     }
 
     void Move()
@@ -105,7 +104,7 @@ public class MM_Test_Player : MonoBehaviour
         _NowXSpeed = nowXSpeed;
         _NowYSpeed = nowYSpeed;
 
-
+        // ガスの時の縦移動
         if(_pState.GetState()!=MM_PlayerPhaseState.State.Gas)
         {
             if (_velocity.x != 0)
@@ -113,6 +112,7 @@ public class MM_Test_Player : MonoBehaviour
             else
                 _rb.AddForce(new Vector3(-_rb.velocity.x * _InertiaPower, _rb.velocity.y, _rb.velocity.z), ForceMode.Acceleration);
         }
+        // それ以外の時の横移動
         else
         {
             if (_velocity.y != 0)
@@ -134,11 +134,7 @@ public class MM_Test_Player : MonoBehaviour
 
     }
 
-    void Jump()
-    {
-        if (_velocity.y != 0)
-            _rb.AddForce(_velocity, ForceMode.Acceleration);
-    }
+
     private void GroundCheck()
     {
         isOnGround = _groundCheck.IsGround();
@@ -169,23 +165,6 @@ public class MM_Test_Player : MonoBehaviour
     {
         StartCoroutine(IsPuddleCollisionDeadCount());
     }
-    // 水に触れたら死亡までのカウントを開始
-    private IEnumerator IsPuddleCollisionDeadCount()
-    {
-        float contactTime = 0f;
-        float destroyTime = 2f;
-
-        while (isOnWater)
-        {
-            contactTime += Time.deltaTime;
-            yield return null;
-            if (contactTime >= destroyTime)
-            {
-                Death();
-            }
-            // print($"{nameof(contactTime)}:{contactTime}");
-        }
-    }
     private void PlayerSlimeStateUpdateFunc()
     {
 
@@ -200,9 +179,6 @@ public class MM_Test_Player : MonoBehaviour
     // publicにする必要がある
     public void OnMove(InputAction.CallbackContext context)
     {
-        // performed、canceledコールバックを受け取る
-        // そうしないと二重で呼ばれる
-        if (context.started) return;
         // 気体なら横移動はできない
         if (_pState.GetState() == MM_PlayerPhaseState.State.Gas) return;
         // 固体の時水に触れてなかったら動けない
@@ -211,10 +187,10 @@ public class MM_Test_Player : MonoBehaviour
         // MoveActionの入力値を取得
         var axis = context.ReadValue<Vector2>();
 
-        print($"MoveActionの入力値:{axis}");
-
         // 2Dなので横移動だけ
         _velocity = new Vector3(axis.x * _MovePower, 0, 0);
+
+        print("Move");
     }
     public void OnGasMove(InputAction.CallbackContext context)
     {
@@ -239,19 +215,31 @@ public class MM_Test_Player : MonoBehaviour
         // 気体なら跳べない
         if (_pState.GetState() == MM_PlayerPhaseState.State.Gas) return;
 
-        // MoveActionの入力値を取得
-        var axis = context.ReadValue<Vector2>();
+        _velocity = new Vector3(_velocity.x,0, 0);
 
-        print($"MoveActionの入力値:{axis}");
-
-        // 2Dなので横移動だけ
-        _velocity = new Vector3(0,axis.y * _JumpPower, 0);
-        //_rb.AddForce(new Vector3(0, _JumpPower, 0), ForceMode.VelocityChange);
+        _rb.AddForce(new Vector3(0, _JumpPower, 0), ForceMode.VelocityChange);
 
         print("Jumpが押されました");
     }
 
 
+    // 水に触れたら死亡までのカウントを開始
+    private IEnumerator IsPuddleCollisionDeadCount()
+    {
+        float contactTime = 0f;
+        float destroyTime = 2f;
+
+        while (isOnWater)
+        {
+            contactTime += Time.deltaTime;
+            yield return null;
+            if (contactTime >= destroyTime)
+            {
+                Death();
+            }
+            // print($"{nameof(contactTime)}:{contactTime}");
+        }
+    }
     /// <summary>
     /// 気体へ変化
     /// </summary>
