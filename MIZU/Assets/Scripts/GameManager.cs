@@ -9,4 +9,14 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void GameStart()
+    {
+        SceneManager.LoadScene("selectedScene");
+    }
+
+    public void GoToStage1()
+    {
+        SceneManager.LoadScene("stage gimic");
+    }
 }
