@@ -23,6 +23,8 @@ public class PlayerJoinManager : MonoBehaviour
     {
         // 最大参加可能数で配列を初期化
         joinedDevices = new InputDevice[maxPlayerCount];
+        
+        
 
         // InputActionを有効化し、コールバックを設定
         playerJoinInputAction.Enable();
