@@ -24,7 +24,7 @@ public class MM_Test_Player : MonoBehaviour
     private float _MovePower;
     [SerializeField]
     private float _LimitSpeed;
-    [SerializeField,Header("慣性力,-1~10")]
+    [SerializeField, Header("慣性力,-1~10")]
     private float _InertiaPower;
     [SerializeField]
     private float _NowXSpeed;
@@ -66,7 +66,7 @@ public class MM_Test_Player : MonoBehaviour
 
         nowGravity = _defaultGravity;
 
-        _InertiaPower= Mathf.Clamp(_InertiaPower,-1,10);
+        _InertiaPower = Mathf.Clamp(_InertiaPower, -1, 10);
 
     }
 
@@ -83,7 +83,9 @@ public class MM_Test_Player : MonoBehaviour
         GroundCheck();
         Move();
         if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
             Death();
+        }
     }
 
     void Gravity()
@@ -99,7 +101,7 @@ public class MM_Test_Player : MonoBehaviour
         _NowYSpeed = nowYSpeed;
 
         // それ以外の時の横移動
-        if (_pState.GetState()!=MM_PlayerPhaseState.State.Gas)
+        if (_pState.GetState() != MM_PlayerPhaseState.State.Gas)
         {
             if (_velocity.x != 0)
                 _rb.AddForce(_velocity, ForceMode.Acceleration);
@@ -114,7 +116,7 @@ public class MM_Test_Player : MonoBehaviour
             else
                 _rb.AddForce(new Vector3(_rb.velocity.x, -_rb.velocity.y * _InertiaPower, _rb.velocity.z), ForceMode.Acceleration);
         }
-  
+
         if (nowXSpeed > _LimitSpeed)
         {
             _rb.velocity = new Vector3(_rb.velocity.x / (nowXSpeed / _LimitSpeed), _rb.velocity.y, _rb.velocity.z);
@@ -166,7 +168,7 @@ public class MM_Test_Player : MonoBehaviour
 
     private void Death()
     {
-        Destroy(gameObject);
+        this.gameObject.SetActive(false);
     }
     // メソッド名は何でもOK
     // publicにする必要がある
@@ -207,7 +209,7 @@ public class MM_Test_Player : MonoBehaviour
         // 気体なら跳べない
         if (_pState.GetState() == MM_PlayerPhaseState.State.Gas) return;
 
-        _velocity = new Vector3(_velocity.x,0, 0);
+        _velocity = new Vector3(_velocity.x, 0, 0);
 
         _rb.AddForce(new Vector3(0, _JumpPower, 0), ForceMode.VelocityChange);
 
