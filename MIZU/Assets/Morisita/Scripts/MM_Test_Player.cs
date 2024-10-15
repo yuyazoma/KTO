@@ -31,8 +31,6 @@ public class MM_Test_Player : MonoBehaviour
     [SerializeField]
     private float _NowYSpeed;
     [SerializeField]
-    private float _MaxY;
-    [SerializeField]
     private Material[] _playerMaterials = new Material[2];
 
     bool isOnGround = false;
@@ -77,8 +75,6 @@ public class MM_Test_Player : MonoBehaviour
         if (Debug_Phasetext != null)
             Debug_Phasetext.text = "Player:" + _pState.GetState();
         PlayerStateUpdateFunc();
-
-
     }
 
     private void FixedUpdate()
@@ -86,10 +82,8 @@ public class MM_Test_Player : MonoBehaviour
         Gravity();
         GroundCheck();
         Move();
-        if(_MaxY<transform.position.y)
-        _MaxY = transform.position.y;
-        if (isOnGround)
-            _MaxY = 0;
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+            Death();
     }
 
     void Gravity()
@@ -104,15 +98,15 @@ public class MM_Test_Player : MonoBehaviour
         _NowXSpeed = nowXSpeed;
         _NowYSpeed = nowYSpeed;
 
-        // ƒKƒX‚ÌŽž‚ÌcˆÚ“®
-        if(_pState.GetState()!=MM_PlayerPhaseState.State.Gas)
+        // ‚»‚êˆÈŠO‚ÌŽž‚Ì‰¡ˆÚ“®
+        if (_pState.GetState()!=MM_PlayerPhaseState.State.Gas)
         {
             if (_velocity.x != 0)
                 _rb.AddForce(_velocity, ForceMode.Acceleration);
             else
                 _rb.AddForce(new Vector3(-_rb.velocity.x * _InertiaPower, _rb.velocity.y, _rb.velocity.z), ForceMode.Acceleration);
         }
-        // ‚»‚êˆÈŠO‚ÌŽž‚Ì‰¡ˆÚ“®
+        // ƒKƒX‚ÌŽž‚ÌcˆÚ“®
         else
         {
             if (_velocity.y != 0)
@@ -124,16 +118,15 @@ public class MM_Test_Player : MonoBehaviour
         if (nowXSpeed > _LimitSpeed)
         {
             _rb.velocity = new Vector3(_rb.velocity.x / (nowXSpeed / _LimitSpeed), _rb.velocity.y, _rb.velocity.z);
-            print("LimitedXSpeed");
+            //print("LimitedXSpeed");
         }
         if (nowYSpeed > _LimitSpeed)
         {
             _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y / (nowYSpeed / _LimitSpeed), _rb.velocity.z);
-            print("LimitedYSpeed");
+            //print("LimitedYSpeed");
         }
 
     }
-
 
     private void GroundCheck()
     {
@@ -190,7 +183,6 @@ public class MM_Test_Player : MonoBehaviour
         // 2D‚È‚Ì‚Å‰¡ˆÚ“®‚¾‚¯
         _velocity = new Vector3(axis.x * _MovePower, 0, 0);
 
-        print("Move");
     }
     public void OnGasMove(InputAction.CallbackContext context)
     {
@@ -240,6 +232,7 @@ public class MM_Test_Player : MonoBehaviour
             // print($"{nameof(contactTime)}:{contactTime}");
         }
     }
+
     /// <summary>
     /// ‹C‘Ì‚Ö•Ï‰»
     /// </summary>
