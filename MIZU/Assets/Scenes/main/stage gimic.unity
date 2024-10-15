@@ -2620,6 +2620,7 @@ GameObject:
   - component: {fileID: 663912138}
   - component: {fileID: 663912137}
   - component: {fileID: 663912136}
+  - component: {fileID: 663912139}
   m_Layer: 0
   m_Name: SlideFloor
   m_TagString: Ground
@@ -2636,7 +2637,7 @@ Transform:
   m_GameObject: {fileID: 663912134}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.210382, y: -7.3105206, z: -3.8333719}
+  m_LocalPosition: {x: 27.7, y: -7.3105206, z: -3.8333719}
   m_LocalScale: {x: 3.4900002, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2713,6 +2714,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663912134}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &663912139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663912134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9052be8b5faa8485ca5ce46c1d9265b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.9
+  distance: 5
 --- !u!1 &664555081
 GameObject:
   m_ObjectHideFlags: 0
@@ -4196,6 +4211,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f42d5a065a99e4095a54587eb4229d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1189440872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989633159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d865f81ba20c4bf499d55f0a1ff1532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1189440873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989633159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d865f81ba20c4bf499d55f0a1ff1532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1261137331 stripped
@@ -6931,6 +6970,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9212248133941372242, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1189440862}
+    - targetCorrespondingSourceObject: {fileID: 9212248133941372242, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1189440873}
+    - targetCorrespondingSourceObject: {fileID: 9212248133941372242, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1189440872}
   m_SourcePrefab: {fileID: 100100000, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
 --- !u!1 &2017433476
 GameObject:
