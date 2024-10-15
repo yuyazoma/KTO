@@ -10,6 +10,8 @@ TagManager:
   - LeftArm
   - puddle
   - goal
+  - Water
+  - Dead Zone
   layers:
   - Default
   - TransparentFX
