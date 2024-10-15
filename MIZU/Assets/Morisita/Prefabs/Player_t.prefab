@@ -85,12 +85,12 @@ GameObject:
   - component: {fileID: 4983944235081395210}
   - component: {fileID: 5285702299015473651}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player_t
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &519852361866195074
 Transform:
   m_ObjectHideFlags: 0
@@ -258,14 +258,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7634d031-a07f-4e9c-a4ef-25fd1661cce1
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6b82ada8-04ea-4674-95b8-a93ac9a36b2a
-    m_ActionName: Player/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7bcc8d34-f78d-42c2-8231-c942fff91251
-    m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 8e938b32-2f24-4911-b728-4033ff9b8ff0
