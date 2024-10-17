@@ -12,6 +12,7 @@ TagManager:
   - goal
   - Water
   - Dead Zone
+  - MoveGround
   layers:
   - Default
   - TransparentFX

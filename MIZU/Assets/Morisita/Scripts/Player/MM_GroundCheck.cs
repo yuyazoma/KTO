@@ -6,6 +6,7 @@ public class MM_GroundCheck : MonoBehaviour
     //[Header("エフェクトがついた床を判定するか")] public bool checkPlatformGroud = true;
 
     private string groundTag = "Ground";
+    private string groundTag2 = "MoveGround";
     private string waterTag = "puddle";
     //private string platformTag = "GroundPlatform";
     //private string moveFloorTag = "MoveFloor";
@@ -45,12 +46,12 @@ public class MM_GroundCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag(groundTag))
+        if (collision.CompareTag(groundTag)|| collision.CompareTag(groundTag2))
         {
             isGroundEnter = true;
             isGroundExit = false;
         }
-        if (collision.CompareTag(waterTag))
+        if (collision.CompareTag(waterTag) || collision.CompareTag(groundTag2))
         {
             isWaterEnter = true;
             isWaterExit = false;
@@ -59,12 +60,12 @@ public class MM_GroundCheck : MonoBehaviour
 
     private void OnTriggerStay(Collider collision)
     {
-        if (collision.CompareTag(groundTag))
+        if (collision.CompareTag(groundTag) || collision.CompareTag(groundTag2))
         {
             isGroundStay = true;
             isGroundExit = false;
         }
-        if (collision.CompareTag(waterTag))
+        if (collision.CompareTag(waterTag) || collision.CompareTag(groundTag2))
         {
             isWaterStay = true;
             isWaterExit = false;
@@ -73,13 +74,13 @@ public class MM_GroundCheck : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.CompareTag(groundTag))
+        if (collision.CompareTag(groundTag) || collision.CompareTag(groundTag2))
         {
             isGroundEnter = false;
             isGroundStay = false;
             isGroundExit = true;
         }
-        if (collision.CompareTag(waterTag))
+        if (collision.CompareTag(waterTag) || collision.CompareTag(groundTag2))
         {
             isWaterEnter = false;
             isWaterStay = false;

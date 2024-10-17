@@ -14,7 +14,7 @@ public class MovingwithFloor : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // "MovingFloor"というタグを持つオブジェクトに接触したとき
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("MoveGround"))
         {
             // プレイヤーを床の子オブジェクトに設定
             transform.parent = collision.transform;
@@ -25,7 +25,7 @@ public class MovingwithFloor : MonoBehaviour
     void OnCollisionExit(Collision collision)
     {
         // "MovingFloor"というタグを持つオブジェクトから離れたとき
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("MoveGround"))
         {
             // プレイヤーを元の親オブジェクトに戻す
             transform.parent = originalParent;
