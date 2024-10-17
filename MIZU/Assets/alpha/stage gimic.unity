@@ -843,8 +843,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 100000
+  m_BreakTorque: 100000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -974,6 +974,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quad
       objectReference: {fileID: 0}
+    - target: {fileID: 3611495348739658969, guid: c606c3612c34efa44909db51b1a89f57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9056667724491531822, guid: c606c3612c34efa44909db51b1a89f57, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.83000004
@@ -1074,8 +1078,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 100000
+  m_BreakTorque: 100000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -1705,8 +1709,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 100000
+  m_BreakTorque: 100000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -1973,8 +1977,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 100000
+  m_BreakTorque: 100000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -2603,8 +2607,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 100000
+  m_BreakTorque: 100000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -3623,8 +3627,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 100000
+  m_BreakTorque: 100000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -3731,8 +3735,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 100000
+  m_BreakTorque: 100000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -4492,8 +4496,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 100000
+  m_BreakTorque: 100000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -4553,8 +4557,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 100000
+  m_BreakTorque: 100000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -4738,8 +4742,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 100000
+  m_BreakTorque: 100000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
