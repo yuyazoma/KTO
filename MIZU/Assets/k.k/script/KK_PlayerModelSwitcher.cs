@@ -17,14 +17,20 @@ public class KK_PlayerModelSwitcher : MonoBehaviour
 
     public void SwitchToModel(GameObject newModel)
     {
+        Debug.Log("Switching model to: " + newModel.name);
+
         // 現在のモデルがあれば非アクティブにする
         if (currentModel != null)
         {
             currentModel.SetActive(false);
+            Debug.Log("Previous model deactivated: " + currentModel.name);
         }
 
         // 新しいモデルを設定してアクティブにする
         currentModel = newModel;
         currentModel.SetActive(true);
+        Debug.Log("New model activated: " + currentModel.name);
     }
+
+
 }
