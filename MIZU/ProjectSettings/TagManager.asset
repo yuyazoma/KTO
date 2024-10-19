@@ -13,6 +13,10 @@ TagManager:
   - Water
   - Dead Zone
   - MoveGround
+  - HealSpot
+  - Cloud
+  - Ice
+  - Slime
   layers:
   - Default
   - TransparentFX

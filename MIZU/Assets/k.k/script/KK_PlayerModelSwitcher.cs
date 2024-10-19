@@ -11,7 +11,7 @@ public class KK_PlayerModelSwitcher : MonoBehaviour
     public GameObject transformationEffect;  // 変身エフェクト用のオブジェクト
     public float effectDuration = 2f;        // エフェクトの表示時間（秒）
 
-    private GameObject currentModel; // 現在表示しているモデル
+    [HideInInspector] public GameObject currentModel; // 現在表示しているモデル
 
     void Start()
     {
