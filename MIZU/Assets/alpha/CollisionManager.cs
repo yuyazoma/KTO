@@ -10,10 +10,9 @@ public class CollisionManager : MonoBehaviour
     private Collider player1Collider;
     private Collider player2Collider;
 
-
-    // 複数の衝突したオブジェクトを保持するためのリスト
-    public List<Collider> hitCollidersList { get; private set; } = new List<Collider>();
-
+    // プレイヤー1とプレイヤー2それぞれの衝突したオブジェクトを保持するリスト
+    private List<Collider> player1HitColliders = new List<Collider>();
+    private List<Collider> player2HitColliders = new List<Collider>();
 
     // Start is called before the first frame update
     void Start()
@@ -31,31 +30,47 @@ public class CollisionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // プレイヤー1の衝突をチェック
         if (player1Collider != null)
         {
-            CheckCollisions(player1Collider, "Player");
+            CheckCollisions(player1Collider, player1HitColliders);
         }
+        // プレイヤー2の衝突をチェック
         if (player2Collider != null)
         {
-            CheckCollisions(player2Collider, "Player 2");
+            CheckCollisions(player2Collider, player2HitColliders);
         }
     }
 
     // 衝突を確認するメソッド
-    private void CheckCollisions(Collider playerCollider, string playerName)
+    private void CheckCollisions(Collider playerCollider, List<Collider> hitCollidersList)
     {
         // 前回の衝突リストをクリア
         hitCollidersList.Clear();
 
+        // コライダーの周りにある全ての衝突体を取得
         Collider[] hitColliders = Physics.OverlapSphere(playerCollider.transform.position, playerCollider.bounds.extents.magnitude);
 
+        // 各コライダーについて処理
         foreach (Collider hitCollider in hitColliders)
         {
             if (hitCollider != playerCollider)
             {
-                Debug.Log(playerName + " collided with " + hitCollider.gameObject.name);
-                hitCollidersList.Add(hitCollider);  // 衝突したオブジェクトをリストに追加
+                // 衝突したオブジェクトをリストに追加
+                hitCollidersList.Add(hitCollider);
             }
         }
+    }
+
+    // プレイヤー1がヒールスポットに衝突したかどうかを確認
+    public List<Collider> GetPlayer1HitColliders()
+    {
+        return player1HitColliders;
+    }
+
+    // プレイヤー2がヒールスポットに衝突したかどうかを確認
+    public List<Collider> GetPlayer2HitColliders()
+    {
+        return player2HitColliders;
     }
 }

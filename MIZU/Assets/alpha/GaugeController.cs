@@ -38,13 +38,29 @@ public class GaugeController : MonoBehaviour
             float attackPower = 0.1f;
             BeInjured(attackPower, currentModelTag);
 
-            // 回復エリアのチェック
-            foreach (Collider col in _collisionManager.hitCollidersList)
+            // プレイヤー1とプレイヤー2のヒールスポット衝突チェック
+            if (player == Player.Player1)
             {
-                if (col.gameObject.CompareTag("HealSpot"))
+                // プレイヤー1がヒールスポットに衝突したかチェック
+                foreach (Collider col in _collisionManager.GetPlayer1HitColliders())
                 {
-                    Heal(100f);  // 回復量を指定
-                    break;
+                    if (col.gameObject.CompareTag("HealSpot"))
+                    {
+                        Heal(100f);  // プレイヤー1の回復量
+                        break;
+                    }
+                }
+            }
+            else if (player == Player.Player2)
+            {
+                // プレイヤー2がヒールスポットに衝突したかチェック
+                foreach (Collider col in _collisionManager.GetPlayer2HitColliders())
+                {
+                    if (col.gameObject.CompareTag("HealSpot"))
+                    {
+                        Heal(100f);  // プレイヤー2の回復量
+                        break;
+                    }
                 }
             }
         }
