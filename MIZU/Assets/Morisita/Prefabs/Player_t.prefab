@@ -82,16 +82,15 @@ GameObject:
   - component: {fileID: 4269527086922749433}
   - component: {fileID: -5598851994831873067}
   - component: {fileID: 2388713484992299827}
-  - component: {fileID: 4744324138728975715}
   - component: {fileID: 4983944235081395210}
   - component: {fileID: 5285702299015473651}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player_t
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &519852361866195074
 Transform:
   m_ObjectHideFlags: 0
@@ -101,7 +100,7 @@ Transform:
   m_GameObject: {fileID: 9212248133941372242}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -165,7 +164,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9212248133941372242}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a76facf65632f6f40a28269e6113ac6c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -259,14 +258,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7634d031-a07f-4e9c-a4ef-25fd1661cce1
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6b82ada8-04ea-4674-95b8-a93ac9a36b2a
-    m_ActionName: Player/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7bcc8d34-f78d-42c2-8231-c942fff91251
-    m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 8e938b32-2f24-4911-b728-4033ff9b8ff0
@@ -389,7 +380,7 @@ MonoBehaviour:
     m_ActionName: Player/StateChange_Slime[/Keyboard/s]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4744324138728975715}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MM_Test_ObjectUIMarker, Assembly-CSharp
         m_MethodName: UI_Display
         m_Mode: 1
@@ -421,10 +412,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IS_DEBUGMODE: 1
-  _defaultGravity: 10
-  nowGravity: 10
-  _JumpPower: 6
-  _MoveSpeed: 10
+  _defaultGravity: 20
+  nowGravity: 20
+  _JumpPower: 100
+  _MovePower: 100
+  _LimitSpeed: 10
+  _InertiaPower: 10
+  _NowXSpeed: 0
+  _NowYSpeed: 0
   _playerMaterials:
   - {fileID: 2100000, guid: 1d59752a329f42f4eb1a56ba9aaddde0, type: 2}
   - {fileID: 2100000, guid: e3e165aa8989378488ee40e08ee70b83, type: 2}
@@ -441,22 +436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7f9d577f4f10647a7fef1cacb0ebf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4744324138728975715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9212248133941372242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1885fed2835b5f94eacd588be459adff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetCamera: {fileID: 0}
-  _target: {fileID: 519852361866195074}
-  _targetUI: {fileID: 0}
-  _worldOffset: {x: 0, y: 1.2, z: 0}
 --- !u!114 &4983944235081395210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +443,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9212248133941372242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 088e0ade737cace43b7e57da94a49367, type: 3}
   m_Name: 

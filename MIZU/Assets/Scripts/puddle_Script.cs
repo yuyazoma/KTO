@@ -53,7 +53,7 @@ public class puddle_Script : MonoBehaviour
 
                 if (contactTime >= destroyTime)
                 {
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
                 }
             }
             else  //  プレイヤーの状態がLiquid以外の時
