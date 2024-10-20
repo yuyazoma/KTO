@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 必要なコンポーネントを強制的にアタッチ
-[RequireComponent(typeof(MM_PlayerPhaseState))]
 [RequireComponent(typeof(Collider))]
 
 public class RiseGas : MonoBehaviour
 {
-    public float riseSpeed = 5f;   //  上昇速度
-    public float riseHeight = 30f; //  上昇する高さ
-    public bool isRising = false;
+    [SerializeField] private float riseSpeed = 5f;   //  上昇速度
+    [SerializeField] private float riseHeight = 30f; //  上昇する高さ
+    [SerializeField] private bool isRising = false;
 
     private Vector3 initialPosition;
 
-    private MM_PlayerPhaseState _pState;
-
-    public RotateObject rotateObjectScript;
+    [SerializeField] private MM_PlayerPhaseState _pState;
 
     void Start()
     {
@@ -26,12 +23,7 @@ public class RiseGas : MonoBehaviour
         // エラーチェック
         if (_pState == null)
         {
-            Debug.LogError("MM_PlayerPhaseState コンポーネントが見つかりません！");
-        }
-
-        if (rotateObjectScript == null)
-        {
-            Debug.LogError("RotateObjectScript が設定されていません！");
+            Debug.LogError("MM_PlayerPhaseState コンポーネントが見つかりません");
         }
 
         // 初期位置を保存
@@ -41,7 +33,7 @@ public class RiseGas : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //  トリガーに入ったオブジェクトがriseGasのタグを持っていて、RotateObjectが回転中の場合
-        if (rotateObjectScript != null && rotateObjectScript.isRotating && other.CompareTag("riseGas"))
+        if (other.CompareTag("riseGas"))
         {
             isRising = true;
             Debug.Log("RiseGas started rising due to trigger.");
@@ -51,7 +43,7 @@ public class RiseGas : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //  トリガーから出たオブジェクトがriseGasのタグを持っている、または RotateObjectが回転を停止した場合
-        if (other.CompareTag("riseGas") || (rotateObjectScript != null && !rotateObjectScript.isRotating))
+        if (other.CompareTag("riseGas"))
         {
             isRising = false;
             Debug.Log("RiseGas stopped rising due to trigger exit or rotation stopped.");
@@ -62,7 +54,7 @@ public class RiseGas : MonoBehaviour
     {
        
 
-        if (isRising)
+        if (isRising && _pState.GetState() == MM_PlayerPhaseState.State.Gas)
         {
             //  上昇
             float step = riseSpeed * Time.deltaTime;
@@ -74,7 +66,7 @@ public class RiseGas : MonoBehaviour
             if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
                 isRising = false;
-                Debug.Log("RiseGas reached target height and stopped rising.");
+                Debug.Log($"プレイヤーは目標の高さまで上昇したので、止まります。");
             }
         }
     }
