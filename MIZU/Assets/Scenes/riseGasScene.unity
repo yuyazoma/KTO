@@ -808,6 +808,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9212248133941372242, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212248133941372242, guid: ecce3dce8e045c14ba3587069a2c3184, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -877,6 +881,9 @@ MonoBehaviour:
   gasModel: {fileID: 2011268576}
   solidModel: {fileID: 762025208}
   slimeModel: {fileID: 2129683022}
+  transformationEffect: {fileID: 0}
+  effectDuration: 2
+  currentModel: {fileID: 0}
 --- !u!114 &265130866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2001,7 +2008,7 @@ GameObject:
   - component: {fileID: 1462486118}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
