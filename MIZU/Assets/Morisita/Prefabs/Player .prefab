@@ -16,18 +16,15 @@ GameObject:
   - component: {fileID: 5870043038148978453}
   - component: {fileID: 8581478714213885984}
   - component: {fileID: 7885911688773437202}
-  - component: {fileID: 64945924161391021}
-  - component: {fileID: 4447012705219133261}
   - component: {fileID: 5453993290882855034}
   - component: {fileID: 7809452653720183641}
-  - component: {fileID: 4256226298552564796}
   m_Layer: 9
   m_Name: 'Player '
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8127404912125442723
 Transform:
   m_ObjectHideFlags: 0
@@ -335,6 +332,34 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2981ebf7-3e17-4350-8211-c2fa4b2c3ae2
     m_ActionName: Player/SolidModeChange
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 69cb0376-c11d-422f-bb25-6e430c36b4ff
+    m_ActionName: Player1/Move[/XInputControllerWindows/leftStick,/Keyboard/i,/Keyboard/upArrow,/Keyboard/k,/Keyboard/downArrow,/Keyboard/j,/Keyboard/leftArrow,/Keyboard/l,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b9d01438-ea91-4189-8349-035e80ca61cf
+    m_ActionName: Player1/Jump[/Keyboard/i,/XInputControllerWindows/buttonEast,/Keyboard/0]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ce277f5e-1e32-4694-a33f-f90b4354dc85
+    m_ActionName: Player1/StateChage_Gas[/Keyboard/shift,/Keyboard/upArrow,/XInputControllerWindows/buttonNorth,/XInputControllerWindows/leftStick/up]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b1c080e3-6d7d-43b0-b477-49c4441520cf
+    m_ActionName: Player1/StateChage_Solid[/Keyboard/shift,/Keyboard/downArrow,/XInputControllerWindows/buttonNorth,/XInputControllerWindows/leftStick/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 93bcb659-3b12-4700-a0fa-2c89e8a511f6
+    m_ActionName: Player1/StateChage_Liquid[/Keyboard/shift,/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c37eaca1-3117-4a2a-a9c5-653eafc28754
+    m_ActionName: Player1/StateChange_Slime[/Keyboard/downArrow,/XInputControllerWindows/leftStick/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 75ff3bb7-102f-4aaa-8679-63408471c0d6
+    m_ActionName: Player1/DisplaySolidModeChangeUI[/XInputControllerWindows/rightTrigger,/XInputControllerWindows/leftTrigger,/Keyboard/q,/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -364,6 +389,7 @@ MonoBehaviour:
   _playerMaterials:
   - {fileID: 2100000, guid: 1d59752a329f42f4eb1a56ba9aaddde0, type: 2}
   - {fileID: 2100000, guid: e3e165aa8989378488ee40e08ee70b83, type: 2}
+  _groundCheck: {fileID: 7579222300641021930}
   Debug_Phasetext: {fileID: 0}
 --- !u!114 &7885911688773437202
 MonoBehaviour:
@@ -375,33 +401,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a7f9d577f4f10647a7fef1cacb0ebf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &64945924161391021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3191589095473248152}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 088e0ade737cace43b7e57da94a49367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstbutton: {fileID: 0}
-  OnEneble: 1
-  OnLoadScene: 0
---- !u!114 &4447012705219133261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3191589095473248152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71e1d89b3a93e3c4eafd7f2c4abd6340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5453993290882855034
@@ -420,6 +419,9 @@ MonoBehaviour:
   gasModel: {fileID: 6921175642487182533}
   solidModel: {fileID: 7748118269385609328}
   slimeModel: {fileID: 8469598898537547196}
+  transformationEffect: {fileID: 0}
+  effectDuration: 2
+  currentModel: {fileID: 0}
 --- !u!114 &7809452653720183641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,19 +436,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   childObject: {fileID: 8469598898537547196}
   slimeCamera: {fileID: 0}
---- !u!114 &4256226298552564796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3191589095473248152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd31a0f2322df124c8853f2d05849b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTime: 2
 --- !u!1 &5265254597551202488
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +502,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e1d89b3a93e3c4eafd7f2c4abd6340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnGround: 0
+  isGroundEnter: 0
+  isGroundStay: 0
+  isGroundExit: 0
+  isOnWater: 0
+  isWaterEnter: 0
+  isWaterStay: 0
+  isWaterExit: 0
 --- !u!1 &5724016345979306084
 GameObject:
   m_ObjectHideFlags: 0

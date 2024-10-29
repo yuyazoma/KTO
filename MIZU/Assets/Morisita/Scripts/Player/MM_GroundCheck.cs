@@ -11,37 +11,56 @@ public class MM_GroundCheck : MonoBehaviour
     //private string platformTag = "GroundPlatform";
     //private string moveFloorTag = "MoveFloor";
     //private string fallFloorTag = "FallFloor";
-    private bool isGround = false;
+    [SerializeField]
+    private bool isOnGround = false;
+    [SerializeField]
     private bool isGroundEnter, isGroundStay, isGroundExit;
-    private bool isWater = false;
+    [SerializeField]
+    private bool isOnWater = false;
+    [SerializeField]
     private bool isWaterEnter, isWaterStay, isWaterExit;
 
+
+    public void ResetFlag()
+    {
+        isOnGround = false;
+        isGroundEnter = false;
+        isGroundStay = false;
+        isGroundExit = false;
+
+        isOnWater = false;
+        isWaterEnter = false;
+        isWaterStay = false;
+        isWaterExit = false;
+
+        print("GroudFlagReset");
+    }
 
     //接地判定を返すメソッド
     public bool IsGround()
     {
         if (isGroundEnter || isGroundStay)
         {
-            isGround = true;
+            isOnGround = true;
         }
         else if (isGroundExit)
         {
-            isGround = false;
+            isOnGround = false;
         }
-        return isGround;
+        return isOnGround;
     }
 
     public bool IsPuddle()
     {
         if (isWaterEnter || isWaterStay)
         {
-            isWater = true;
+            isOnWater = true;
         }
         else if (isWaterExit)
         {
-            isWater = false;
+            isOnWater = false;
         }
-        return isWater;
+        return isOnWater;
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -51,7 +70,7 @@ public class MM_GroundCheck : MonoBehaviour
             isGroundEnter = true;
             isGroundExit = false;
         }
-        if (collision.CompareTag(waterTag) || collision.CompareTag(groundTag2))
+        if (collision.CompareTag(waterTag))
         {
             isWaterEnter = true;
             isWaterExit = false;
@@ -65,7 +84,7 @@ public class MM_GroundCheck : MonoBehaviour
             isGroundStay = true;
             isGroundExit = false;
         }
-        if (collision.CompareTag(waterTag) || collision.CompareTag(groundTag2))
+        if (collision.CompareTag(waterTag))
         {
             isWaterStay = true;
             isWaterExit = false;
@@ -80,7 +99,7 @@ public class MM_GroundCheck : MonoBehaviour
             isGroundStay = false;
             isGroundExit = true;
         }
-        if (collision.CompareTag(waterTag) || collision.CompareTag(groundTag2))
+        if (collision.CompareTag(waterTag))
         {
             isWaterEnter = false;
             isWaterStay = false;

@@ -11,17 +11,19 @@ public class MM_PlayerSpownTest : MonoBehaviour
     [SerializeField]
     private List<GameObject> player;
     [SerializeField]
+    private float spownTime = 5f;
+    [SerializeField]
     private Transform playerSpownPoint;
 
     void Update()
     {
-        if(player!=null)
+        if (player != null)
         {
-            foreach(var p in player)
-            if (!p.activeSelf)
-            {
-                StartCoroutine(Spown(p));
-            }
+            foreach (var p in player)
+                if (!p.activeSelf)
+                {
+                    StartCoroutine(Spown(p));
+                }
         }
         else
         {
@@ -34,8 +36,8 @@ public class MM_PlayerSpownTest : MonoBehaviour
     {
         p.transform.position = playerSpownPoint.position;
 
-        yield return new WaitForSeconds(5);
-        
+        yield return new WaitForSeconds(spownTime);
+
         p.SetActive(true);
     }
 
@@ -46,5 +48,10 @@ public class MM_PlayerSpownTest : MonoBehaviour
     public void LeftJoinPlayer(PlayerInput playerInput)
     {
         //player.Remove(playerInput.gameObject);
+    }
+
+    public void SpownPointUpdate(Transform transform)
+    {
+        playerSpownPoint = transform;
     }
 }

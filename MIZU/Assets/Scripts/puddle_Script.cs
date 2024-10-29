@@ -49,7 +49,7 @@ public class puddle_Script : MonoBehaviour
             if(_pState.GetState() == MM_PlayerPhaseState.State.Liquid)
             {
                 contactTime += Time.deltaTime;
-                Debug.Log("Count");
+                //Debug.Log("Count");
 
                 if (contactTime >= destroyTime)
                 {

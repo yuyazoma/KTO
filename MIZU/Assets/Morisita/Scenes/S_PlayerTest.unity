@@ -1825,6 +1825,67 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &5224873535578969
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3191589095473248152, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: m_Name
+      value: 'Player '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581478714213885984, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: IS_DEBUGMODE
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
 --- !u!1001 &371648546694751268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1885,6 +1946,38 @@ PrefabInstance:
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 5870043038148978453, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+    - target: {fileID: 8576091929493272821, guid: d6681c38ad6d43e43b2b0e68bffb45b2, type: 3}
+      propertyPath: playerJoinInputAction.m_SingletonActionBindings.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576091929493272821, guid: d6681c38ad6d43e43b2b0e68bffb45b2, type: 3}
+      propertyPath: playerJoinInputAction.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 7a736487-aca7-45fd-aef5-0fd77294c71e
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576091929493272821, guid: d6681c38ad6d43e43b2b0e68bffb45b2, type: 3}
+      propertyPath: playerJoinInputAction.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 64e16208-c803-4f3d-8e0f-bf900c16e11e
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576091929493272821, guid: d6681c38ad6d43e43b2b0e68bffb45b2, type: 3}
+      propertyPath: playerJoinInputAction.m_SingletonActionBindings.Array.data[1].m_Name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576091929493272821, guid: d6681c38ad6d43e43b2b0e68bffb45b2, type: 3}
+      propertyPath: playerJoinInputAction.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Gamepad>/buttonEast
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576091929493272821, guid: d6681c38ad6d43e43b2b0e68bffb45b2, type: 3}
+      propertyPath: playerJoinInputAction.m_SingletonActionBindings.Array.data[2].m_Path
+      value: <XInputController>/buttonSouth
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576091929493272821, guid: d6681c38ad6d43e43b2b0e68bffb45b2, type: 3}
+      propertyPath: playerJoinInputAction.m_SingletonActionBindings.Array.data[1].m_Flags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576091929493272821, guid: d6681c38ad6d43e43b2b0e68bffb45b2, type: 3}
+      propertyPath: playerJoinInputAction.m_SingletonActionBindings.Array.data[1].m_Groups
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2433,3 +2526,4 @@ SceneRoots:
   - {fileID: 2132599870}
   - {fileID: 966638142}
   - {fileID: 149005653}
+  - {fileID: 5224873535578969}

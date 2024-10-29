@@ -7,13 +7,15 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(MM_PlayerPhaseState))]
-[RequireComponent(typeof(MM_GroundCheck))]
-
 public class MM_Test_Player : MonoBehaviour
 {
     [SerializeField]
     [Header("デバッグモード")]
     bool IS_DEBUGMODE = false;
+    [SerializeField]
+    TextMeshProUGUI Debug_Phasetext;
+
+    [Header("運動ステータス")]
     [SerializeField]
     private float _defaultGravity;
     [SerializeField]
@@ -32,6 +34,8 @@ public class MM_Test_Player : MonoBehaviour
     private float _NowYSpeed;
     [SerializeField]
     private Material[] _playerMaterials = new Material[2];
+    [SerializeField]
+    private MM_GroundCheck _groundCheck;
 
     bool isOnGround = false;
     bool isOnWater = false;
@@ -40,10 +44,6 @@ public class MM_Test_Player : MonoBehaviour
     PlayerInput _playerInput;
     MeshRenderer _meshRenderer;
     MM_PlayerPhaseState _pState;
-    MM_GroundCheck _groundCheck;
-
-    [SerializeField]
-    TextMeshProUGUI Debug_Phasetext;
 
     private Vector3 _velocity;
 
@@ -54,8 +54,11 @@ public class MM_Test_Player : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
         _meshRenderer = GetComponent<MeshRenderer>();
         _pState = GetComponent<MM_PlayerPhaseState>();
-        _groundCheck = GetComponent<MM_GroundCheck>();
         _modelSwitcher = GetComponent<KK_PlayerModelSwitcher>(); // PlayerModelSwitcher コンポーネントを取得
+
+        if (_groundCheck == null)
+            Debug.LogWarning($"{nameof(_groundCheck)}にアタッチされていません");
+
 
         if (_playerInput.user.index == 0)
             _meshRenderer.material = _playerMaterials[0];
@@ -148,26 +151,16 @@ public class MM_Test_Player : MonoBehaviour
         }
     }
 
-    private void PlayerGasStateUpdateFunc()
-    {
-
-    }
-    private void PlayerSolidStateUpdateFunc()
-    {
-
-    }
+    private void PlayerGasStateUpdateFunc() { }
+    private void PlayerSolidStateUpdateFunc() { }
     private void PlayerLiquidStateUpdateFunc()
     {
         StartCoroutine(IsPuddleCollisionDeadCount());
     }
-    private void PlayerSlimeStateUpdateFunc()
-    {
-
-    }
-
-
+    private void PlayerSlimeStateUpdateFunc() { }
     private void Death()
     {
+        _groundCheck.ResetFlag();
         this.gameObject.SetActive(false);
     }
     // メソッド名は何でもOK
