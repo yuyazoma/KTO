@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: 5349044961495998986}
   - component: {fileID: 8926178418039334514}
   - component: {fileID: 7481283446848092906}
-  - component: {fileID: 3730911009243309687}
   - component: {fileID: 4860549570814685755}
   - component: {fileID: 1192235375944601273}
   - component: {fileID: 1541296339101427623}
@@ -338,6 +337,34 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2981ebf7-3e17-4350-8211-c2fa4b2c3ae2
     m_ActionName: Player/SolidModeChange
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 69cb0376-c11d-422f-bb25-6e430c36b4ff
+    m_ActionName: Player1/Move[/Keyboard/i,/Keyboard/upArrow,/Keyboard/k,/Keyboard/downArrow,/Keyboard/j,/Keyboard/leftArrow,/Keyboard/l,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b9d01438-ea91-4189-8349-035e80ca61cf
+    m_ActionName: Player1/Jump[/Keyboard/i,/Keyboard/0]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ce277f5e-1e32-4694-a33f-f90b4354dc85
+    m_ActionName: Player1/StateChage_Gas[/Keyboard/shift,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b1c080e3-6d7d-43b0-b477-49c4441520cf
+    m_ActionName: Player1/StateChage_Solid[/Keyboard/shift,/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 93bcb659-3b12-4700-a0fa-2c89e8a511f6
+    m_ActionName: Player1/StateChage_Liquid[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c37eaca1-3117-4a2a-a9c5-653eafc28754
+    m_ActionName: Player1/StateChange_Slime[/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 75ff3bb7-102f-4aaa-8679-63408471c0d6
+    m_ActionName: Player1/DisplaySolidModeChangeUI[/Keyboard/q,/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -423,6 +450,9 @@ MonoBehaviour:
   gasModel: {fileID: 1875536534565329124}
   solidModel: {fileID: 2859214810020990096}
   slimeModel: {fileID: 6817236037595799518}
+  transformationEffect: {fileID: 0}
+  effectDuration: 2
+  currentModel: {fileID: 0}
 --- !u!114 &7481283446848092906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,19 +467,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   childObject: {fileID: 6817236037595799518}
   slimeCamera: {fileID: 0}
---- !u!114 &3730911009243309687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3943468329023581636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd31a0f2322df124c8853f2d05849b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTime: 2
 --- !u!114 &4860549570814685755
 MonoBehaviour:
   m_ObjectHideFlags: 0
