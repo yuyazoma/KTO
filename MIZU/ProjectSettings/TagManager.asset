@@ -18,6 +18,7 @@ TagManager:
   - Cloud
   - Ice
   - Slime
+  - moveRightGas
   layers:
   - Default
   - TransparentFX
