@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52373cf21197032419a99aafe6f33b0a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52373cf21197032419a99aafe6f33b0a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -48,10 +48,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -172317167310884639, guid: 52373cf21197032419a99aafe6f33b0a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -172317167310884639, guid: 52373cf21197032419a99aafe6f33b0a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -172317167310884639, guid: 52373cf21197032419a99aafe6f33b0a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52373cf21197032419a99aafe6f33b0a, type: 3}
       propertyPath: m_Name
       value: waterP1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 52373cf21197032419a99aafe6f33b0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 52373cf21197032419a99aafe6f33b0a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 52373cf21197032419a99aafe6f33b0a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bba7c9c1b64385b428bda9fa85d5919f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
