@@ -4632,6 +4632,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2253571340082523559, guid: 96dd3da5f74858d4fa6bd9c77fc59fbf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.57357645
+      objectReference: {fileID: 0}
+    - target: {fileID: 2253571340082523559, guid: 96dd3da5f74858d4fa6bd9c77fc59fbf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2253571340082523559, guid: 96dd3da5f74858d4fa6bd9c77fc59fbf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.81915206
+      objectReference: {fileID: 0}
+    - target: {fileID: 2253571340082523559, guid: 96dd3da5f74858d4fa6bd9c77fc59fbf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2253571340082523559, guid: 96dd3da5f74858d4fa6bd9c77fc59fbf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 110
+      objectReference: {fileID: 0}
     - target: {fileID: 3943468329023581636, guid: 96dd3da5f74858d4fa6bd9c77fc59fbf, type: 3}
       propertyPath: m_Name
       value: 'Player '
@@ -4684,6 +4704,10 @@ PrefabInstance:
       propertyPath: slimeCamera
       value: 
       objectReference: {fileID: 1377936949}
+    - target: {fileID: 7656662635318212378, guid: 96dd3da5f74858d4fa6bd9c77fc59fbf, type: 3}
+      propertyPath: rotationSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
