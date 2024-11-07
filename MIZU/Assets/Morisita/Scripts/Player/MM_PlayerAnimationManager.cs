@@ -9,7 +9,11 @@ public class MM_PlayerAnimationManager : MonoBehaviour
     [SerializeField]
     private MM_GroundCheck groundCheck;
     [SerializeField]
-    private bool isJumping=false;
+    private bool isJumping = false;
+    [SerializeField]
+    private bool isAir = false;
+
+    Vector3 defaultPosition = new(0f, -0.3f, 0);
 
     Animator _animator;
     // Start is called before the first frame update
@@ -21,13 +25,13 @@ public class MM_PlayerAnimationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.localPosition = new(0f,-0.3f,0);
+        this.transform.localPosition = defaultPosition;
         PlayJumpAnim();
     }
 
     void PlayJumpAnim()
     {
-        float pSpeed_X = tPlayer.GetSpeed().x;
+        float pSpeed_X = Mathf.Sqrt(Mathf.Pow(tPlayer.GetSpeed().x, 2));
         float pSpeed_Y = tPlayer.GetSpeed().y;
         bool isGround = groundCheck.IsGround();
 
@@ -44,11 +48,13 @@ public class MM_PlayerAnimationManager : MonoBehaviour
         {
             _animator.SetBool("OnGround", true);
             isJumping = false;
+            isAir = false;
         }
-        else
+        else if (!isGround&&!isJumping&&!isAir)
         {
             _animator.SetBool("OnGround", false);
-            _animator.Play("jump", 0, 0.7f);
+            _animator.Play("falling", 0, 0.0f);
+            isAir = true;
         }
 
 

@@ -12,6 +12,10 @@ public class MM_PlayerSpownTest : MonoBehaviour
     private List<GameObject> player;
     [SerializeField]
     private float spownTime = 5f;
+
+
+    [SerializeField, Header("初期リスポーン地点")]
+    private Transform firstPlayerSpownPoint;
     [SerializeField]
     private Transform playerSpownPoint;
 
@@ -44,6 +48,7 @@ public class MM_PlayerSpownTest : MonoBehaviour
     public void GetJoinPlayer(PlayerInput playerInput)
     {
         player.Add(playerInput.gameObject);
+        playerInput.transform.position = firstPlayerSpownPoint.position;
     }
     public void LeftJoinPlayer(PlayerInput playerInput)
     {
