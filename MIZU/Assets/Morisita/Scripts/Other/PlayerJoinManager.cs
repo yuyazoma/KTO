@@ -13,6 +13,7 @@ public class PlayerJoinManager : MonoBehaviour
     // 最大参加人数
     [SerializeField] private int maxPlayerCount = default;
 
+
     // Join済みのデバイス情報
     private InputDevice[] joinedDevices = default;
     // 現在のプレイヤー数
@@ -25,7 +26,6 @@ public class PlayerJoinManager : MonoBehaviour
         joinedDevices = new InputDevice[maxPlayerCount];
         
         
-
         // InputActionを有効化し、コールバックを設定
         playerJoinInputAction.Enable();
         playerJoinInputAction.performed += OnJoin;

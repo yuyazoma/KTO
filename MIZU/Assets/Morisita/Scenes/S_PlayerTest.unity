@@ -642,7 +642,7 @@ Transform:
   m_GameObject: {fileID: 703286400}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.18, y: -0.39, z: 0}
+  m_LocalPosition: {x: -11.18, y: 16.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1688,13 +1688,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Player '
       objectReference: {fileID: 0}
+    - target: {fileID: 3191589095473248152, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.59
+      value: -5.7
       objectReference: {fileID: 0}
     - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8
+      value: 11.26
       objectReference: {fileID: 0}
     - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1727,6 +1731,22 @@ PrefabInstance:
     - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581478714213885984, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: _MovePower
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581478714213885984, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: nowGravity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581478714213885984, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: _LimitSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581478714213885984, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: _defaultGravity
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1783,6 +1803,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6083268394867832902, guid: d6681c38ad6d43e43b2b0e68bffb45b2, type: 3}
       propertyPath: playerSpownPoint
+      value: 
+      objectReference: {fileID: 703286401}
+    - target: {fileID: 6083268394867832902, guid: d6681c38ad6d43e43b2b0e68bffb45b2, type: 3}
+      propertyPath: firstPlayerSpownPoint
       value: 
       objectReference: {fileID: 703286401}
     - target: {fileID: 7464774446010493885, guid: d6681c38ad6d43e43b2b0e68bffb45b2, type: 3}

@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 3191589095473248152}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.59, y: 2.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2580,6 +2580,7 @@ MonoBehaviour:
   tPlayer: {fileID: 8581478714213885984}
   groundCheck: {fileID: 7579222300641021930}
   isJumping: 0
+  isAir: 0
 --- !u!4 &7992210045492943751 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1006364984685339164, guid: fd3856a73233de241aab3b0f6d1cf45e, type: 3}
