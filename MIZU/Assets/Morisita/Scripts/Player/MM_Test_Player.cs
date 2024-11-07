@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Profiling;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerInput))]
@@ -28,10 +30,13 @@ public class MM_Test_Player : MonoBehaviour
     private float _LimitSpeed;
     [SerializeField, Header("慣性力,-1~10")]
     private float _InertiaPower;
+
     [SerializeField]
     private float _NowXSpeed;
     [SerializeField]
     private float _NowYSpeed;
+    [SerializeField]
+    private int _pRotation = 1;
     [SerializeField]
     private Material[] _playerMaterials = new Material[2];
     [SerializeField]
@@ -131,6 +136,10 @@ public class MM_Test_Player : MonoBehaviour
             //print("LimitedYSpeed");
         }
 
+        // 計算打ち切り
+        if (nowXSpeed < 1)
+            _rb.velocity = new Vector3(0, _rb.velocity.y, _rb.velocity.z);
+
     }
 
     private void GroundCheck()
@@ -174,6 +183,11 @@ public class MM_Test_Player : MonoBehaviour
             if (!isOnWater) return;
         // MoveActionの入力値を取得
         var axis = context.ReadValue<Vector2>();
+
+        print($"{nameof(axis.x)}:{axis.x}");
+        // プレイヤーが右向きなら1、左なら－1
+        if (axis.x != 0)
+            _pRotation = axis.x > 0f ? 1 : -1;
 
         // 2Dなので横移動だけ
         _velocity = new Vector3(axis.x * _MovePower, 0, 0);
@@ -332,5 +346,15 @@ public class MM_Test_Player : MonoBehaviour
 
         print("SLIME(スライム)になりました");
 
+    }
+
+    public int GetPlayerOrientation()
+    {
+        return _pRotation;
+    }
+
+    public Vector2 GetSpeed()
+    {
+        return _rb.velocity;
     }
 }

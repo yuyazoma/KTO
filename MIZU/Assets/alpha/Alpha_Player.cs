@@ -13,9 +13,9 @@ public class Alpha_Player : MonoBehaviour
     private bool isPlayerOneMode = true; // True: Player 1 mode (WAD1234), False: Player 2 mode (IJL7890)
 
 
-    [SerializeField]
-    [Header("デバッグモード")]
-    bool IS_DEBUGMODE = false;
+    //[SerializeField]
+    //[Header("デバッグモード")]
+    //bool IS_DEBUGMODE = false;
     [SerializeField]
     private float _defaultGravity;
     [SerializeField]
