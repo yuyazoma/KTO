@@ -19,4 +19,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("stage gimic");
     }
+
+    public void RetrunTitle()
+    {
+        SceneManager.LoadScene("titleScene");
+    }
 }
