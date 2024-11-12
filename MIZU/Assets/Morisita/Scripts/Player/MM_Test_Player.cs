@@ -27,7 +27,9 @@ public class MM_Test_Player : MonoBehaviour
     [SerializeField]
     private float _MovePower;
     [SerializeField]
-    private float _LimitSpeed;
+    private float _LimitXSpeed;
+    [SerializeField]
+    private float _LimitYSpeed;
     [SerializeField, Header("慣性力,-1~10")]
     private float _InertiaPower;
 
@@ -37,8 +39,6 @@ public class MM_Test_Player : MonoBehaviour
     private float _NowYSpeed;
     [SerializeField]
     private int _pRotation = 1;
-    [SerializeField]
-    private Material[] _playerMaterials = new Material[2];
     [SerializeField]
     private MM_GroundCheck _groundCheck;
 
@@ -62,13 +62,7 @@ public class MM_Test_Player : MonoBehaviour
         _modelSwitcher = GetComponent<KK_PlayerModelSwitcher>(); // PlayerModelSwitcher コンポーネントを取得
 
         if (_groundCheck == null)
-            Debug.LogWarning($"{nameof(_groundCheck)}にアタッチされていません");
-
-
-        if (_playerInput.user.index == 0)
-            _meshRenderer.material = _playerMaterials[0];
-        else
-            _meshRenderer.material = _playerMaterials[1];
+            Debug.LogWarning($"{nameof(_groundCheck)}がアタッチされていません");
 
         _pState.ChangeState(MM_PlayerPhaseState.State.Liquid);
 
@@ -83,6 +77,7 @@ public class MM_Test_Player : MonoBehaviour
         if (Debug_Phasetext != null)
             Debug_Phasetext.text = "Player:" + _pState.GetState();
         PlayerStateUpdateFunc();
+        LimitedSpeed();
     }
 
     private void FixedUpdate()
@@ -103,43 +98,39 @@ public class MM_Test_Player : MonoBehaviour
 
     void Move()
     {
-        var nowXSpeed = Mathf.Sqrt(Mathf.Pow(_rb.velocity.x, 2));
-        var nowYSpeed = Mathf.Sqrt(Mathf.Pow(_rb.velocity.y, 2));
-        _NowXSpeed = nowXSpeed;
-        _NowYSpeed = nowYSpeed;
-
-        // それ以外の時の横移動
-        if (_pState.GetState() != MM_PlayerPhaseState.State.Gas)
-        {
-            if (_velocity.x != 0)
-                _rb.AddForce(_velocity, ForceMode.Acceleration);
-            else
-                _rb.AddForce(new Vector3(-_rb.velocity.x * _InertiaPower, _rb.velocity.y, _rb.velocity.z), ForceMode.Acceleration);
-        }
         // ガスの時の縦移動
-        else
+        if (_pState.GetState() == MM_PlayerPhaseState.State.Gas)
         {
             if (_velocity.y != 0)
                 _rb.AddForce(_velocity, ForceMode.Acceleration);
             else
                 _rb.AddForce(new Vector3(_rb.velocity.x, -_rb.velocity.y * _InertiaPower, _rb.velocity.z), ForceMode.Acceleration);
         }
-
-        if (nowXSpeed > _LimitSpeed)
+        // それ以外の時の横移動
+        else
         {
-            _rb.velocity = new Vector3(_rb.velocity.x / (nowXSpeed / _LimitSpeed), _rb.velocity.y, _rb.velocity.z);
-            //print("LimitedXSpeed");
+            if (_velocity.x != 0)
+                _rb.AddForce(_velocity, ForceMode.Acceleration);
+            else
+                _rb.AddForce(new Vector3(-_rb.velocity.x * _InertiaPower, _rb.velocity.y, _rb.velocity.z), ForceMode.Acceleration);
         }
-        if (nowYSpeed > _LimitSpeed)
+    }
+
+    void LimitedSpeed()
+    {
+        // 速度制限、上限を超えたら上限まで下げる
+        if (GetAbsSpeed().x > _LimitXSpeed)
         {
-            _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y / (nowYSpeed / _LimitSpeed), _rb.velocity.z);
-            //print("LimitedYSpeed");
+            _rb.velocity = new Vector3(_rb.velocity.x / (GetAbsSpeed().x/ _LimitXSpeed), _rb.velocity.y, _rb.velocity.z);
+        }
+        if (GetAbsSpeed().y > _LimitYSpeed)
+        {
+            _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y / (GetAbsSpeed().y / _LimitYSpeed), _rb.velocity.z);
         }
 
-        // 計算打ち切り
-        if (nowXSpeed < 1)
+        // 計算打ち切り、一定以下なら0にする
+        if (GetAbsSpeed().x < 1)
             _rb.velocity = new Vector3(0, _rb.velocity.y, _rb.velocity.z);
-
     }
 
     private void GroundCheck()
@@ -150,6 +141,10 @@ public class MM_Test_Player : MonoBehaviour
 
     private void PlayerStateUpdateFunc()
     {
+        // 今のプレイヤーの速度を確認できるようにする
+        _NowXSpeed = GetAbsSpeed().x;
+        _NowYSpeed = GetAbsSpeed().y;
+
         switch (_pState.GetState())
         {
             case MM_PlayerPhaseState.State.Gas: PlayerGasStateUpdateFunc(); break;
@@ -269,7 +264,6 @@ public class MM_Test_Player : MonoBehaviour
 
         print("GAS(気体)になりました");
     }
-
     /// <summary>
     /// 固体へ変化
     /// </summary>
@@ -297,7 +291,7 @@ public class MM_Test_Player : MonoBehaviour
         print("SOLID(固体)になりました");
     }
     /// <summary>
-    /// 液体へ変化
+    /// 液体（人型）へ変化
     /// </summary>
     public void OnStateChangeLiquid(InputAction.CallbackContext context)
     {
@@ -348,6 +342,7 @@ public class MM_Test_Player : MonoBehaviour
 
     }
 
+
     public int GetPlayerOrientation()
     {
         return _pRotation;
@@ -356,5 +351,15 @@ public class MM_Test_Player : MonoBehaviour
     public Vector2 GetSpeed()
     {
         return _rb.velocity;
+    }
+
+    public Vector2 GetAbsSpeed()
+    {
+        var velo = _rb.velocity;
+
+        velo.x = Mathf.Sqrt(Mathf.Pow(_rb.velocity.x, 2));
+        velo.y = Mathf.Sqrt(Mathf.Pow(_rb.velocity.y, 2));
+
+        return velo;
     }
 }
