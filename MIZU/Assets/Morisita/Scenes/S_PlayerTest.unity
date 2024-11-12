@@ -506,7 +506,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  map: {fileID: -944628639613478452, guid: 532e93d6bda4aee43aa51a3351b55294, type: 3}
+  inputasset: {fileID: -944628639613478452, guid: 532e93d6bda4aee43aa51a3351b55294, type: 3}
   playerPrefab: {fileID: 5870043038148978453, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
   maxPlayerCount: 2
 --- !u!1 &650416261

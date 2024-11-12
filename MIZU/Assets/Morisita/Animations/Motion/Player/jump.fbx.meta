@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d1e95e76a2761f24988317e6d9421b56
+guid: 4770295b9fd54e04ea6fa2cbbbcfe63d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -19,9 +19,11 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'catch' has import animation warnings that might
+    animationImportWarnings: "\nClip 'jump' has import animation warnings that might
       lower retargeting quality:\nNote: Activate translation DOF on avatar to improve
       retargeting quality.\n\t'spine2' is inbetween humanoid transforms and has rotation
+      animation that will be discarded.\n\t'te_L' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'head' has translation
       animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
@@ -36,18 +38,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: catch
-      takeName: catch
-      internalID: 9216924916764937971
-      firstFrame: 0
-      lastFrame: 217
+      name: jump
+      takeName: jump
+      internalID: -2993534804863918692
+      firstFrame: 71
+      lastFrame: 116
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -242,7 +244,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: te_L
+    - boneName: yubi_L
       humanName: LeftHand
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -275,125 +277,125 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: catch(Clone)
+    - name: jump(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: hip
-      parentName: catch(Clone)
-      position: {x: -0.00055623613, y: 0.13209903, z: -0.006283127}
-      rotation: {x: 0.004464232, y: 0.06881942, z: -0.7085401, w: 0.7022926}
-      scale: {x: 1, y: 1, z: 1}
-    - name: spine1
-      parentName: hip
-      position: {x: -0.23756759, y: -1.2878587e-16, z: -0.055558804}
-      rotation: {x: -0.004144869, y: -0.093986064, z: 0.005892832, w: 0.9955475}
-      scale: {x: 1, y: 1, z: 1}
-    - name: spine2
-      parentName: spine1
-      position: {x: -0.25560617, y: -8.2156505e-17, z: 0.008731359}
-      rotation: {x: -0.0076301326, y: 0.05770616, z: 0.012222274, w: 0.9982296}
-      scale: {x: 1, y: 1, z: 1}
-    - name: neck
-      parentName: spine2
-      position: {x: -0.18666178, y: -3.5527136e-17, z: -4.8849813e-17}
-      rotation: {x: -0.022146627, y: -0.059835333, z: -0.017642515, w: 0.9978066}
-      scale: {x: 1, y: 1, z: 1}
-    - name: head
-      parentName: neck
-      position: {x: -0.667777, y: -1.1413092e-15, z: -1.4210854e-16}
-      rotation: {x: 0.014261121, y: -0.014849311, z: -0.03425948, w: 0.9992009}
-      scale: {x: 1, y: 1, z: 1}
-    - name: clavicle_L
-      parentName: spine2
-      position: {x: -0.019339424, y: -0.06360689, z: 0.015605341}
-      rotation: {x: 0.106383674, y: -0.14791618, z: 0.7642271, w: 0.61867625}
-      scale: {x: 1, y: 1, z: 1}
-    - name: uparm_L
-      parentName: clavicle_L
-      position: {x: -0.10850414, y: -0.0020826855, z: 0.07138132}
-      rotation: {x: -0.13390408, y: -0.51804584, z: 0.02084723, w: 0.84454936}
-      scale: {x: 1, y: 1, z: 1}
-    - name: lowarm_L
-      parentName: uparm_L
-      position: {x: -0.026291244, y: 0.006372925, z: 0.27478144}
-      rotation: {x: 0.0028906767, y: 0.005925865, z: -0.060729425, w: 0.99813247}
-      scale: {x: 1, y: 1, z: 1}
-    - name: te_L
-      parentName: lowarm_L
-      position: {x: -0.018856175, y: 0.007030055, z: 0.20874271}
-      rotation: {x: -0.074555494, y: 0.75721717, z: 0.03417404, w: 0.64799374}
-      scale: {x: 1, y: 1, z: 1}
-    - name: yubi_L
-      parentName: te_L
-      position: {x: -0.095423475, y: -7.656098e-13, z: -1.912781e-13}
-      rotation: {x: 0.06483223, y: -0.69444263, z: -0.047582086, w: 0.71503997}
-      scale: {x: 1, y: 1, z: 1}
-    - name: clavicle_R
-      parentName: spine2
-      position: {x: -0.019338954, y: 0.0636069, z: 0.0156053705}
-      rotation: {x: 0.735928, y: 0.6593722, z: -0.061844613, w: 0.14076072}
-      scale: {x: 1, y: 1, z: 1}
-    - name: uparm_R
-      parentName: clavicle_R
-      position: {x: 0.108503886, y: 0.002082473, z: -0.071381144}
-      rotation: {x: -0.00019186737, y: -0.5507039, z: -0.007186294, w: 0.8346697}
-      scale: {x: 1, y: 1, z: 1}
-    - name: lowarm_R
-      parentName: uparm_R
-      position: {x: 0.026291322, y: -0.0063734194, z: -0.2747815}
-      rotation: {x: -0.018473329, y: 0.015649857, z: 0.14370914, w: 0.9893238}
-      scale: {x: 1, y: 1, z: 1}
-    - name: te_R
-      parentName: lowarm_R
-      position: {x: 0.018856622, y: -0.007030306, z: -0.20874256}
-      rotation: {x: -0.012355124, y: -0.6987125, z: 0.11186545, w: 0.7064944}
-      scale: {x: 1, y: 1, z: 1}
-    - name: yubi_R
-      parentName: te_R
-      position: {x: -0.09542367, y: -8.1483263e-13, z: 5.968559e-15}
-      rotation: {x: -0.04761534, y: 0.7150372, z: -0.06486261, w: 0.69444036}
-      scale: {x: 1, y: 1, z: 1}
-    - name: upleg_L
-      parentName: hip
-      position: {x: 0.0040352494, y: -0.15070124, z: 0.006763176}
-      rotation: {x: 0.13500114, y: 0.008007862, z: 0.9906924, w: 0.01546919}
-      scale: {x: 1, y: 1, z: 1}
-    - name: lowleg_L
-      parentName: upleg_L
-      position: {x: -0.05857724, y: -0.0024995105, z: 0.00994305}
-      rotation: {x: -0.0036884963, y: 0.037365478, z: 0.009735339, w: 0.99924743}
-      scale: {x: 1, y: 1, z: 1}
-    - name: foot_L
-      parentName: lowleg_L
-      position: {x: -0.066459514, y: -0.0028688998, z: -0.0025373464}
-      rotation: {x: -0.038597055, y: 0.6943668, z: 0.005412725, w: 0.71856505}
-      scale: {x: 1, y: 1, z: 1}
-    - name: toe_L
-      parentName: foot_L
-      position: {x: -0.07861067, y: 0.0022824516, z: 0.02536217}
-      rotation: {x: -2.1478045e-13, y: -1.4432899e-15, z: 5.1604554e-14, w: 1}
+      parentName: jump(Clone)
+      position: {x: -0.00040561054, y: 0.12970142, z: -0.0060139224}
+      rotation: {x: 0.0361612, y: 0.07793632, z: -0.70240253, w: 0.7065756}
       scale: {x: 1, y: 1, z: 1}
     - name: upleg_R
       parentName: hip
-      position: {x: 0.0040304083, y: 0.150701, z: 0.006762382}
-      rotation: {x: 0.99074566, y: 0.013866408, z: -0.13491727, w: -0.005299535}
+      position: {x: 0.004030377, y: 0.150701, z: 0.006762379}
+      rotation: {x: 0.99159235, y: -0.018216021, z: -0.12769386, w: -0.010355946}
       scale: {x: 1, y: 1, z: 1}
     - name: lowleg_R
       parentName: upleg_R
-      position: {x: 0.058582347, y: 0.0024996288, z: -0.009943269}
-      rotation: {x: -0.010677619, y: 0.0347647, z: 0.011267108, w: 0.99927497}
+      position: {x: 0.058582436, y: 0.0024996235, z: -0.009943304}
+      rotation: {x: -0.019616378, y: 0.03406891, z: 0.011394667, w: 0.999162}
       scale: {x: 1, y: 1, z: 1}
     - name: foot_R
       parentName: lowleg_R
-      position: {x: 0.06645459, y: 0.0028682211, z: 0.0025376754}
-      rotation: {x: 0.025027098, y: 0.68871826, z: 0.018433612, w: 0.72436255}
+      position: {x: 0.06645463, y: 0.0028682153, z: 0.0025376782}
+      rotation: {x: 0.04145776, y: 0.7055083, z: -0.0018753042, w: 0.7074856}
       scale: {x: 1, y: 1, z: 1}
     - name: toe_R
       parentName: foot_R
-      position: {x: 0.07861258, y: -0.002282214, z: -0.025356822}
-      rotation: {x: 2.026582e-13, y: 1.7680302e-14, z: -4.4655252e-14, w: 1}
+      position: {x: 0.07861266, y: -0.0022822192, z: -0.025356876}
+      rotation: {x: -3.035766e-18, y: -2.7755576e-17, z: -1.7347235e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: upleg_L
+      parentName: hip
+      position: {x: 0.0040352633, y: -0.1507013, z: 0.006763173}
+      rotation: {x: 0.14480822, y: 0.007332489, z: 0.9891311, w: 0.024425898}
+      scale: {x: 1, y: 1, z: 1}
+    - name: lowleg_L
+      parentName: upleg_L
+      position: {x: -0.058577288, y: -0.0024995164, z: 0.009943056}
+      rotation: {x: -0.000115860166, y: 0.036558192, z: 0.01032252, w: 0.99927825}
+      scale: {x: 1, y: 1, z: 1}
+    - name: foot_L
+      parentName: lowleg_L
+      position: {x: -0.06645957, y: -0.0028688961, z: -0.0025373267}
+      rotation: {x: -0.022922615, y: 0.722604, z: 0.015479931, w: 0.6907087}
+      scale: {x: 1, y: 1, z: 1}
+    - name: toe_L
+      parentName: foot_L
+      position: {x: -0.07861072, y: 0.0022824432, z: 0.025362207}
+      rotation: {x: -8.673618e-18, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: spine1
+      parentName: hip
+      position: {x: -0.23756757, y: -0.000000014283266, z: -0.055558804}
+      rotation: {x: -0.0021373024, y: -0.08056331, z: -0.0016444162, w: 0.9967458}
+      scale: {x: 1, y: 1, z: 1}
+    - name: spine2
+      parentName: spine1
+      position: {x: -0.2556062, y: 0.000000016126204, z: 0.008731356}
+      rotation: {x: -0.0044478234, y: 0.08459414, z: -0.0030487212, w: 0.99640095}
+      scale: {x: 1, y: 1, z: 1}
+    - name: clavicle_R
+      parentName: spine2
+      position: {x: -0.019339003, y: 0.0636069, z: 0.015605366}
+      rotation: {x: 0.7233914, y: 0.67089534, z: -0.07204677, w: 0.14633425}
+      scale: {x: 1, y: 1, z: 1}
+    - name: uparm_R
+      parentName: clavicle_R
+      position: {x: 0.108504005, y: 0.0020826277, z: -0.07138121}
+      rotation: {x: 0.4049887, y: 0.39467648, z: -0.49432826, w: -0.66019255}
+      scale: {x: 1, y: 1, z: 1}
+    - name: lowarm_R
+      parentName: uparm_R
+      position: {x: 0.026291274, y: -0.0063734446, z: -0.2747815}
+      rotation: {x: -0.008501023, y: 0.017191738, z: 0.16645372, w: 0.9858628}
+      scale: {x: 1, y: 1, z: 1}
+    - name: te_R
+      parentName: lowarm_R
+      position: {x: 0.018856572, y: -0.0070303027, z: -0.20874272}
+      rotation: {x: -0.02261495, y: 0.7178515, z: 0.10804387, w: 0.6873895}
+      scale: {x: 1, y: 1, z: 1}
+    - name: yubi_R
+      parentName: te_R
+      position: {x: 0.09530071, y: -0.0035053398, z: 0.0014207278}
+      rotation: {x: 0.06483203, y: -0.6944426, z: -0.047581986, w: 0.71504}
+      scale: {x: 1, y: 1, z: 1}
+    - name: clavicle_L
+      parentName: spine2
+      position: {x: -0.019339379, y: -0.063606896, z: 0.015605353}
+      rotation: {x: 0.1107674, y: -0.15193391, z: 0.76376295, w: 0.6175053}
+      scale: {x: 1, y: 1, z: 1}
+    - name: uparm_L
+      parentName: clavicle_L
+      position: {x: -0.108504295, y: -0.0020826666, z: 0.07138142}
+      rotation: {x: -0.4981736, y: -0.27571976, z: 0.56886244, w: 0.5934621}
+      scale: {x: 1, y: 1, z: 1}
+    - name: lowarm_L
+      parentName: uparm_L
+      position: {x: -0.026291214, y: 0.006372865, z: 0.27478147}
+      rotation: {x: 0.039946795, y: -0.04170905, z: -0.060062855, w: 0.9965225}
+      scale: {x: 1, y: 1, z: 1}
+    - name: te_L
+      parentName: lowarm_L
+      position: {x: -0.018856205, y: 0.0070300456, z: 0.2087428}
+      rotation: {x: -0.111899406, y: 0.77342063, z: -0.02239821, w: 0.62353617}
+      scale: {x: 1, y: 1, z: 1}
+    - name: yubi_L
+      parentName: te_L
+      position: {x: -0.09530099, y: 0.0035050868, z: -0.0014208328}
+      rotation: {x: 0.06483266, y: -0.6944426, z: -0.047582325, w: 0.71503997}
+      scale: {x: 1, y: 1, z: 1}
+    - name: neck
+      parentName: spine2
+      position: {x: -0.18666331, y: 0.00000003255506, z: -0.00000005352255}
+      rotation: {x: -0.0085279215, y: -0.058957748, z: -0.01570693, w: 0.99810046}
+      scale: {x: 1, y: 1, z: 1}
+    - name: head
+      parentName: neck
+      position: {x: -0.6677886, y: 0.000000011093879, z: -0.0000001713154}
+      rotation: {x: -0.000000026049046, y: -0.0000000039269965, z: -0.0000000032969154, w: 1}
       scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
@@ -404,7 +406,7 @@ ModelImporter:
     feetSpacing: 0
     globalScale: 1
     rootMotionBoneName: 
-    hasTranslationDoF: 1
+    hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
