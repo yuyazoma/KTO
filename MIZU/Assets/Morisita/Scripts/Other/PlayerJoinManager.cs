@@ -9,7 +9,7 @@ public class PlayerJoinManager : MonoBehaviour
     // プレイヤーがゲームにJoinするためのInputAction
     [SerializeField] private InputAction playerJoinInputAction;
 
-    [SerializeField] private InputActionAsset map;
+    [SerializeField] private InputActionAsset inputasset;
     // PlayerInputがアタッチされているプレイヤーオブジェクト
     [SerializeField] private PlayerInput playerPrefab = default;
 
@@ -25,7 +25,7 @@ public class PlayerJoinManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        playerJoinInputAction = inputasset.actionMaps[0].FindAction("Move");
         // 最大参加可能数で配列を初期化
         joinedDevices = new InputDevice[maxPlayerCount];
         // InputActionを有効化し、コールバックを設定
