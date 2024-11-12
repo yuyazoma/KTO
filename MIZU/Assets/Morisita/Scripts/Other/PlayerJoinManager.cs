@@ -7,9 +7,12 @@ public class PlayerJoinManager : MonoBehaviour
 {
 
     // プレイヤーがゲームにJoinするためのInputAction
-    [SerializeField] private InputAction playerJoinInputAction = default;
+    [SerializeField] private InputAction playerJoinInputAction;
+
+    [SerializeField] private InputActionAsset map;
     // PlayerInputがアタッチされているプレイヤーオブジェクト
     [SerializeField] private PlayerInput playerPrefab = default;
+
     // 最大参加人数
     [SerializeField] private int maxPlayerCount = default;
 
@@ -22,10 +25,9 @@ public class PlayerJoinManager : MonoBehaviour
 
     private void Awake()
     {
+        
         // 最大参加可能数で配列を初期化
         joinedDevices = new InputDevice[maxPlayerCount];
-        
-        
         // InputActionを有効化し、コールバックを設定
         playerJoinInputAction.Enable();
         playerJoinInputAction.performed += OnJoin;
@@ -59,10 +61,10 @@ public class PlayerJoinManager : MonoBehaviour
         // PlayerInputを所持した仮想のプレイヤーをインスタンス化
         // ※Join要求元のデバイス情報を紐づけてインスタンスを生成する
         PlayerInput.Instantiate(
-            prefab: playerPrefab.gameObject,
-            playerIndex: currentPlayerCount,
-            pairWithDevice: context.control.device
-            );
+        prefab: playerPrefab.gameObject,
+        playerIndex: currentPlayerCount,
+        pairWithDevice: context.control.device
+        );
 
         // Joinしたデバイス情報を保存
         joinedDevices[currentPlayerCount] = context.control.device;

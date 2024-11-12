@@ -11,6 +11,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(MM_PlayerPhaseState))]
 public class MM_Test_Player : MonoBehaviour
 {
+
+    [SerializeField]
+    private PlayerInput m_PlayerInput;
     [SerializeField]
     [Header("デバッグモード")]
     bool IS_DEBUGMODE = false;
