@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class goalDecisionScript : MonoBehaviour
 {
@@ -34,5 +35,7 @@ public class goalDecisionScript : MonoBehaviour
         {
             Destroy(player);
         }
+
+        SceneManager.LoadScene("goalScene");
     }
 }
