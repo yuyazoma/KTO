@@ -24,4 +24,13 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("titleScene");
     }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;  //  ŠJ”­ŠÂ‹«‚Å‚ÌI—¹‚Ìê‡
+#else
+       Application.Quit();
+#endif
+    }
 }
