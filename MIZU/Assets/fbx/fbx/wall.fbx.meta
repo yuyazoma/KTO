@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: e2f2d1480f99b49f28796c84f6cd8c6f
+guid: a92a5607b72094d6d858736b34295677
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall
+    second: {fileID: 2100000, guid: 369a6974ba4ab0248a78fb7ae20999ce, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: outUV1
+    second: {fileID: 2800000, guid: 90328d6e8f28898499d65feaf9e254df, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

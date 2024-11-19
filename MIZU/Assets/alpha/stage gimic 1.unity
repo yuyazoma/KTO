@@ -4939,8 +4939,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3772705528616544395, guid: c7eb95530a3309d49be7c5f51a7bde4b, type: 3}
+      propertyPath: _JumpPower
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3772705528616544395, guid: c7eb95530a3309d49be7c5f51a7bde4b, type: 3}
       propertyPath: _LimitYSpeed
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4292114060500197287, guid: c7eb95530a3309d49be7c5f51a7bde4b, type: 3}
       propertyPath: m_Name
@@ -10078,6 +10082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Color1
       objectReference: {fileID: 0}
+    - target: {fileID: 3191589095473248152, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8127404912125442723, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.18
@@ -10119,8 +10127,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8581478714213885984, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
+      propertyPath: _JumpPower
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581478714213885984, guid: 29f13ecdf9a6f0d4c89b9bae8f03ad94, type: 3}
       propertyPath: _LimitYSpeed
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

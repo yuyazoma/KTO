@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: cce60fa20634940dfa417919aece6fc6
+guid: d2c908decc7cf4fc1be66e2a1b9db95a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sea
+    second: {fileID: 2100000, guid: a54eab465a976e349acd34fecb4ef1e2, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: outUV3animation
+    second: {fileID: 2800000, guid: cbfdf189aca2cf745a599851770cd4a7, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
