@@ -5,7 +5,7 @@ using UnityEngine;
 public class MM_PlayerAnimationManager : MonoBehaviour
 {
     [SerializeField]
-    private MM_Test_Player tPlayer;
+    private MM_Test_Player playerTest;
     [SerializeField]
     private MM_GroundCheck groundCheck;
     [SerializeField]
@@ -31,8 +31,8 @@ public class MM_PlayerAnimationManager : MonoBehaviour
 
     void PlayJumpAnim()
     {
-        float pSpeed_X = Mathf.Sqrt(Mathf.Pow(tPlayer.GetSpeed().x, 2));
-        float pSpeed_Y = tPlayer.GetSpeed().y;
+        float pSpeed_X = playerTest.GetAbsSpeed().x;
+        float pSpeed_Y = playerTest.GetSpeed().y;
         bool isGround = groundCheck.IsGround();
 
 
