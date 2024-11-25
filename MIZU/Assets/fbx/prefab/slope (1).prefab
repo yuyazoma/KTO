@@ -48,10 +48,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -5731229141766309534, guid: ec72bf7c622c24d17a050ccfb6996aee, type: 3}
-      propertyPath: m_TagString
-      value: Ground
-      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ec72bf7c622c24d17a050ccfb6996aee, type: 3}
       propertyPath: m_Name
       value: slope (1)
