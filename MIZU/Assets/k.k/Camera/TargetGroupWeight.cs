@@ -7,16 +7,17 @@ public class TargetGroupWeight : MonoBehaviour
     public CinemachineTargetGroup targetGroup;
     public Transform player1;
     public Transform player2;
+    public float weightMax = 10f;
 
     void Update()
     {
         if (player1.position.x > player2.position.x)
         {
-            SetWeights(2f, 1f);
+            SetWeights(weightMax, 1f);
         }
         else
         {
-            SetWeights(1f, 2f);
+            SetWeights(1f, weightMax);
         }
     }
 

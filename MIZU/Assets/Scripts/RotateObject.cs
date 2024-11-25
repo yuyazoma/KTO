@@ -43,8 +43,8 @@ public class RotateObject : MonoBehaviour
     {
         if (isRotating)
         {
-            
-            transform.Rotate(Vector3.back, rotationSpeed * Time.deltaTime);
+           transform.Rotate(new Vector3(0,rotationSpeed * Time.deltaTime,0));
+            //transform.Rotate(Vector3.back, rotationSpeed * Time.deltaTime);
 
         }
     }
