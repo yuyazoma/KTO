@@ -160,7 +160,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -176,7 +176,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &5870043038148978453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +219,18 @@ MonoBehaviour:
       - m_Target: {fileID: 8581478714213885984}
         m_TargetAssemblyTypeName: MM_Test_Player, Assembly-CSharp
         m_MethodName: OnMoveVertical
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8581478714213885984}
+        m_TargetAssemblyTypeName: MM_Test_Player, Assembly-CSharp
+        m_MethodName: OnMoveHorizontalPosition
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -471,7 +483,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherRigidbody: {fileID: 0}
   isOnMoveGround: 0
-  originalVelocity: {x: 0, y: 0, z: 0}
   addVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &5265254597551202488
 GameObject:
@@ -513,7 +524,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5265254597551202488}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a76facf65632f6f40a28269e6113ac6c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
