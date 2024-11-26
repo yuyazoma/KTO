@@ -229,7 +229,7 @@ public class MM_Test_Player : MonoBehaviour
     private IEnumerator IsPuddleCollisionDeadCount()
     {
         float contactTime = 0f;
-        float destroyTime = 2f;
+        float destroyTime = 0.00001f;
 
         while (isOnWater)
         {
