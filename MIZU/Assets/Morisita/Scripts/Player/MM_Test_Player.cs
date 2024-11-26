@@ -194,7 +194,7 @@ public class MM_Test_Player : MonoBehaviour
     public void OnMoveVertical(InputAction.CallbackContext context)
     {
         // ‹C‘Ì‚Å‚È‚¯‚ê‚ÎcˆÚ“®‚Í‚Å‚«‚È‚¢
-        if (_pState.GetState() != MM_PlayerPhaseState.State.Gas)
+       if (_pState.GetState() != MM_PlayerPhaseState.State.Gas)
             return;
 
         // MoveAction‚Ì“ü—Í’l‚ğæ“¾
