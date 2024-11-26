@@ -361,6 +361,8 @@ MonoBehaviour:
   _NowYSpeed: 0
   _pRotation: 1
   _groundCheck: {fileID: 144590804627489603}
+  _velocity: {x: 0, y: 0, z: 0}
+  _rbvelocity: {x: 0, y: 0, z: 0}
 --- !u!114 &2108517253469304979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1975,7 +1977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6795547303835321408, guid: 9fe0d62e4c563ff41abd344c6450d21e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
