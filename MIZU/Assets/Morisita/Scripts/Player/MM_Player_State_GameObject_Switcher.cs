@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class MM_Player_State_GameObject_Switcher : MonoBehaviour
@@ -10,11 +11,7 @@ public class MM_Player_State_GameObject_Switcher : MonoBehaviour
     private GameObject _gasObject;
     [SerializeField]
     private GameObject _solidObject;
-
-    private void Start()
-    {
-        OnStateWater();
-    }
+ 
     public void Switch(MM_PlayerPhaseState.State state)
     {
         if (state == MM_PlayerPhaseState.State.Liquid) OnStateWater();
@@ -23,6 +20,11 @@ public class MM_Player_State_GameObject_Switcher : MonoBehaviour
 
         if (state == MM_PlayerPhaseState.State.Solid) OnStateSolid();
 
+    }
+
+    public void InitSwitch()
+    {
+        OnStateWater();
     }
 
     private void OnStateWater()
