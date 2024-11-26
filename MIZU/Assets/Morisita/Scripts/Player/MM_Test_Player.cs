@@ -50,7 +50,10 @@ public class MM_Test_Player : MonoBehaviour
     MeshRenderer _meshRenderer;
     MM_PlayerPhaseState _pState;
 
+    [SerializeField]
     private Vector3 _velocity;
+    [SerializeField]
+    private Vector3 _rbvelocity;
 
     private KK_PlayerModelSwitcher _modelSwitcher;
     private void Start()
@@ -78,6 +81,7 @@ public class MM_Test_Player : MonoBehaviour
         //    Debug_Phasetext.text = "Player:" + _pState.GetState();
         PlayerStateUpdateFunc();
         LimitedSpeed();
+        _rbvelocity=_rb.velocity;
     }
 
     private void FixedUpdate()
@@ -213,7 +217,7 @@ public class MM_Test_Player : MonoBehaviour
         // 気体なら跳べない
         if (_pState.GetState() == MM_PlayerPhaseState.State.Gas) return;
 
-        _velocity = new Vector3(_velocity.x, 0, 0);
+        //_velocity = new Vector3(_velocity.x, 0, 0);
 
         _rb.AddForce(new Vector3(0, _JumpPower, 0), ForceMode.VelocityChange);
 
@@ -256,6 +260,10 @@ public class MM_Test_Player : MonoBehaviour
         // 空気抵抗を発生させる
         _rb.drag = 10;
 
+
+        _velocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
+
         print("GAS(気体)になりました");
 
         //if (IS_DEBUGMODE)
@@ -280,6 +288,8 @@ public class MM_Test_Player : MonoBehaviour
 
 
         _velocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
+
         //_rb.angularVelocity = Vector3.zero;
 
         print("SOLID(固体)になりました");
@@ -309,14 +319,13 @@ public class MM_Test_Player : MonoBehaviour
         // 空気抵抗をなくす
         _rb.drag = 0;
 
-        print("LIQUID(水)になりました");
+        _velocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
 
         //if (IS_DEBUGMODE)
         //    return;
         // モデルを水のやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.liquidModel);
-        //
-
         print("LIQUID(水)になりました");
     }
 
@@ -331,6 +340,10 @@ public class MM_Test_Player : MonoBehaviour
         if (_pState.GetState() != MM_PlayerPhaseState.State.Liquid) return;
 
         _pState.ChangeState(MM_PlayerPhaseState.State.Slime);
+
+        _velocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
+
 
         print("SLIME(スライム)になりました");
 

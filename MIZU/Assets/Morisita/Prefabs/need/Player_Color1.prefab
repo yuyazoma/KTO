@@ -361,6 +361,8 @@ MonoBehaviour:
   _NowYSpeed: 0
   _pRotation: 1
   _groundCheck: {fileID: 7579222300641021930}
+  _velocity: {x: 0, y: 0, z: 0}
+  _rbvelocity: {x: 0, y: 0, z: 0}
 --- !u!114 &7885911688773437202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1785,13 +1787,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8127404912125442723}
     m_Modifications:
+    - target: {fileID: 5737818134794172, guid: 9fe0d62e4c563ff41abd344c6450d21e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910266561038946041, guid: 9fe0d62e4c563ff41abd344c6450d21e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910266561038946041, guid: 9fe0d62e4c563ff41abd344c6450d21e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910266561038946041, guid: 9fe0d62e4c563ff41abd344c6450d21e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.497
+      objectReference: {fileID: 0}
+    - target: {fileID: 910266561038946041, guid: 9fe0d62e4c563ff41abd344c6450d21e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6126429209432137466, guid: 9fe0d62e4c563ff41abd344c6450d21e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6126429209432137466, guid: 9fe0d62e4c563ff41abd344c6450d21e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6126429209432137466, guid: 9fe0d62e4c563ff41abd344c6450d21e, type: 3}
       propertyPath: m_LocalPosition.z
