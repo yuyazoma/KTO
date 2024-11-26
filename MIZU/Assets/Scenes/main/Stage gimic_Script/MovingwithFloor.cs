@@ -13,6 +13,7 @@ public class MovingwithFloor : MonoBehaviour
     // 他のコライダーと接触した時に呼ばれるメソッド
     void OnCollisionEnter(Collision collision)
     {
+        print("Collision");
         // "MovingFloor"というタグを持つオブジェクトに接触したとき
         if (collision.gameObject.CompareTag("MoveGround"))
         {
