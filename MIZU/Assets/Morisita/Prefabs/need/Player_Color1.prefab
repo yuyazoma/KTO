@@ -350,8 +350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a26ba6dd05bc354288ed65982ad0835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IS_DEBUGMODE: 0
-  Debug_Phasetext: {fileID: 0}
   _defaultGravity: 20
   nowGravity: 20
   _JumpPower: 100

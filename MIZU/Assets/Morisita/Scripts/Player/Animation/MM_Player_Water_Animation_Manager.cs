@@ -12,15 +12,17 @@ public class MM_Player_Water_Animation_Manager : MM_Player_Animation_Manager
     private bool isAir = false;
 
     Vector3 defaultPosition = new(0f, -0.3f, 0);
+    Vector3 defaultRotation = new(0f, 0f, 0f);
 
-    void ResetPosition()
+    void ResetTransform()
     {
         this.transform.localPosition = defaultPosition;
+        this.transform.localEulerAngles = defaultRotation;
     }
 
     public override void PlayAnim()
     {
-        ResetPosition();
+        ResetTransform();
 
         float pSpeed_X = playerTest.GetAbsSpeed().x;
         float pSpeed_Y = playerTest.GetSpeed().y;
