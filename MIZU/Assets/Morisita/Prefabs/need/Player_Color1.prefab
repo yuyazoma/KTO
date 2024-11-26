@@ -173,7 +173,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8581478714213885984}
         m_TargetAssemblyTypeName: MM_Test_Player, Assembly-CSharp
-        m_MethodName: OnMove
+        m_MethodName: OnMoveHorizontal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -185,7 +185,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 8581478714213885984}
         m_TargetAssemblyTypeName: MM_Test_Player, Assembly-CSharp
-        m_MethodName: OnGasMove
+        m_MethodName: OnMoveVertical
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -11,11 +11,11 @@ using UnityEngine.UI;
 [RequireComponent(typeof(MM_PlayerPhaseState))]
 public class MM_Test_Player : MonoBehaviour
 {
-    [SerializeField]
-    [Header("デバッグモード")]
-    bool IS_DEBUGMODE = false;
-    [SerializeField]
-    TextMeshProUGUI Debug_Phasetext;
+    //[SerializeField]
+    //[Header("デバッグモード")]
+    //bool IS_DEBUGMODE = false;
+    //[SerializeField]
+    //TextMeshProUGUI Debug_Phasetext;
 
     [Header("運動ステータス")]
     [SerializeField]
@@ -74,8 +74,8 @@ public class MM_Test_Player : MonoBehaviour
 
     private void Update()
     {
-        if (Debug_Phasetext != null)
-            Debug_Phasetext.text = "Player:" + _pState.GetState();
+        //if (Debug_Phasetext != null)
+        //    Debug_Phasetext.text = "Player:" + _pState.GetState();
         PlayerStateUpdateFunc();
         LimitedSpeed();
     }
@@ -98,30 +98,35 @@ public class MM_Test_Player : MonoBehaviour
 
     void Move()
     {
+        // 横移動
+        MoveHorizontal();
         // ガスの時の縦移動
         if (_pState.GetState() == MM_PlayerPhaseState.State.Gas)
-        {
-            if (_velocity.y != 0)
-                _rb.AddForce(_velocity, ForceMode.Acceleration);
-            else
-                _rb.AddForce(new Vector3(_rb.velocity.x, -_rb.velocity.y * _InertiaPower, _rb.velocity.z), ForceMode.Acceleration);
-        }
-        // それ以外の時の横移動
-        else
-        {
-            if (_velocity.x != 0)
-                _rb.AddForce(_velocity, ForceMode.Acceleration);
-            else
-                _rb.AddForce(new Vector3(-_rb.velocity.x * _InertiaPower, _rb.velocity.y, _rb.velocity.z), ForceMode.Acceleration);
-        }
+            MoveVertical();
     }
 
+    void MoveHorizontal()
+    {
+        if (_velocity.x != 0)
+            _rb.AddForce(_velocity, ForceMode.Acceleration);
+        else
+            _rb.AddForce(new Vector3(-_rb.velocity.x * _InertiaPower, _rb.velocity.y, _rb.velocity.z), ForceMode.Acceleration);
+
+    }
+
+    void MoveVertical()
+    {
+        if (_velocity.y != 0)
+            _rb.AddForce(_velocity, ForceMode.Acceleration);
+        else
+            _rb.AddForce(new Vector3(_rb.velocity.x, -_rb.velocity.y * _InertiaPower, _rb.velocity.z), ForceMode.Acceleration);
+    }
     void LimitedSpeed()
     {
         // 速度制限、上限を超えたら上限まで下げる
         if (GetAbsSpeed().x > _LimitXSpeed)
         {
-            _rb.velocity = new Vector3(_rb.velocity.x / (GetAbsSpeed().x/ _LimitXSpeed), _rb.velocity.y, _rb.velocity.z);
+            _rb.velocity = new Vector3(_rb.velocity.x / (GetAbsSpeed().x / _LimitXSpeed), _rb.velocity.y, _rb.velocity.z);
         }
         if (GetAbsSpeed().y > _LimitYSpeed)
         {
@@ -169,10 +174,8 @@ public class MM_Test_Player : MonoBehaviour
     }
     // メソッド名は何でもOK
     // publicにする必要がある
-    public void OnMove(InputAction.CallbackContext context)
+    public void OnMoveHorizontal(InputAction.CallbackContext context)
     {
-        // 気体なら横移動はできない
-        if (_pState.GetState() == MM_PlayerPhaseState.State.Gas) return;
         // 固体の時水に触れてなかったら動けない
         if (_pState.GetState() == MM_PlayerPhaseState.State.Solid)
             if (!isOnWater) return;
@@ -185,10 +188,10 @@ public class MM_Test_Player : MonoBehaviour
             _pRotation = axis.x > 0f ? 1 : -1;
 
         // 2Dなので横移動だけ
-        _velocity = new Vector3(axis.x * _MovePower, 0, 0);
+        _velocity = new Vector3(axis.x * _MovePower, _velocity.y, 0);
 
     }
-    public void OnGasMove(InputAction.CallbackContext context)
+    public void OnMoveVertical(InputAction.CallbackContext context)
     {
         // 気体でなければ縦移動はできない
         if (_pState.GetState() != MM_PlayerPhaseState.State.Gas)
@@ -197,8 +200,7 @@ public class MM_Test_Player : MonoBehaviour
         // MoveActionの入力値を取得
         var axis = context.ReadValue<Vector2>();
 
-        // 気体の時は縦移動だけ
-        _velocity = new Vector3(0, axis.y * _MovePower, 0);
+        _velocity = new Vector3(_velocity.x, axis.y * _MovePower, 0);
     }
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -256,8 +258,8 @@ public class MM_Test_Player : MonoBehaviour
 
         print("GAS(気体)になりました");
 
-        if (IS_DEBUGMODE)
-            return;
+        //if (IS_DEBUGMODE)
+        //    return;
         // モデルを気体のやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.gasModel);
         //
@@ -282,8 +284,8 @@ public class MM_Test_Player : MonoBehaviour
 
         print("SOLID(固体)になりました");
 
-        if (IS_DEBUGMODE)
-            return;
+        //if (IS_DEBUGMODE)
+        //    return;
         // モデルを固体のやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.solidModel);
         //
@@ -309,8 +311,8 @@ public class MM_Test_Player : MonoBehaviour
 
         print("LIQUID(水)になりました");
 
-        if (IS_DEBUGMODE)
-            return;
+        //if (IS_DEBUGMODE)
+        //    return;
         // モデルを水のやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.liquidModel);
         //
@@ -332,8 +334,8 @@ public class MM_Test_Player : MonoBehaviour
 
         print("SLIME(スライム)になりました");
 
-        if (IS_DEBUGMODE)
-            return;
+        //if (IS_DEBUGMODE)
+        //    return;
         // モデルをスライムのやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.slimeModel);
         //
