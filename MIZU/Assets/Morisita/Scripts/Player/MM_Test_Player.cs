@@ -344,7 +344,6 @@ public class MM_Test_Player : MonoBehaviour
         _velocity = Vector3.zero;
         _rb.velocity = Vector3.zero;
 
-
         print("SLIME(ƒXƒ‰ƒCƒ€)‚É‚È‚è‚Ü‚µ‚½");
 
         //if (IS_DEBUGMODE)
