@@ -37,6 +37,7 @@ public class MM_Test_Player : MonoBehaviour
     private MM_GroundCheck _groundCheck;
 
     bool isOnGround = false;
+    [SerializeField]
     bool isOnWater = false;
 
     Rigidbody _rb;
@@ -77,7 +78,7 @@ public class MM_Test_Player : MonoBehaviour
     {
         PlayerStateUpdateFunc();
         LimitedSpeed();
-        _rbvelocity=_rb.velocity;
+        _rbvelocity = _rb.velocity;
     }
 
     private void FixedUpdate()
@@ -178,7 +179,12 @@ public class MM_Test_Player : MonoBehaviour
     {
         // 固体の時水に触れてなかったら動けない
         if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Solid)
-            if (!isOnWater) return;
+            if (!isOnWater)
+            {
+                // Velocityをリセットする
+                _velocity = Vector3.zero;
+                return;
+            }
         // MoveActionの入力値を取得
         var axis = context.ReadValue<Vector2>();
 
@@ -194,7 +200,7 @@ public class MM_Test_Player : MonoBehaviour
     public void OnMoveVertical(InputAction.CallbackContext context)
     {
         // 気体でなければ縦移動はできない
-       if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Gas)
+        if (_playerPhaseState.GetState() != MM_PlayerPhaseState.State.Gas)
             return;
 
         // MoveActionの入力値を取得
@@ -212,8 +218,6 @@ public class MM_Test_Player : MonoBehaviour
         if (isOnWater) return;
         // 気体なら跳べない
         if (_playerPhaseState.GetState() == MM_PlayerPhaseState.State.Gas) return;
-
-        //_velocity = new Vector3(_velocity.x, 0, 0);
 
         _rb.AddForce(new Vector3(0, _JumpPower, 0), ForceMode.VelocityChange);
 
@@ -344,12 +348,20 @@ public class MM_Test_Player : MonoBehaviour
         return _pRotation;
     }
 
-    public Vector2 GetVelocity()
+    public Vector3 GetVelocity()
     {
         return _velocity;
     }
+    public void AddVelocity(Vector3 addvelocity)
+    {
+        _velocity += addvelocity;
+    }
 
-    public Vector2 GetSpeed()
+    public void SetVelocity(Vector3 setvelocity)
+    {
+        _velocity = setvelocity;
+    }
+    public Vector3 GetSpeed()
     {
         return _rb.velocity;
     }

@@ -1,43 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MM_With_Moving_Trigger : MonoBehaviour
+public class MM_Add_Velocity_For_With_Moving : MonoBehaviour
 {
-    // èÊÇ¡ÇΩÇ‡ÇÃÇÃVelocityÇé©ï™ÇÃVelocityÇ…â¡éZÇµÇƒìÆÇ©Ç∑
-    // â°ÇæÇØ
+    // ëOÇ∆ÇÃPositionÇÃç∑ÇéÊÇ¡ÇƒÇ´ÇΩï˚Ç™ê≥ämÇ…ìÆÇ≠Ç¡Ç€Ç¢ÅH
     [SerializeField]
     private Rigidbody otherRigidbody;
     [SerializeField]
     private bool isOnMoveGround;
     [SerializeField]
-    private Vector3 originalVelocity;
-    [SerializeField]
     private Vector3 addVelocity;
 
     string MOVE_GROUND = "MoveGround";
+    
+    Vector3 oldPosition;
     Rigidbody _rb;
-    MM_Test_Player test_Player;
-
+    float power = 20;
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        test_Player=GetComponent<MM_Test_Player>();
-     
         Init();
-        originalVelocity = new(test_Player.GetVelocity().x,0f,0f);
-
     }
     private void OnEnable()
     {
         Init();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (isOnMoveGround)
         {
-            _rb.velocity=originalVelocity+addVelocity;
+            CalcAddVelocity();
+            //_rb.AddForce(otherRigidbody.velocity*(1/Time.fixedDeltaTime), ForceMode.Acceleration);
+            //_rb.AddForce(addVelocity.normalized * ((addVelocity.x - _rb.velocity.x) * power), ForceMode.Acceleration);
+            _rb.MovePosition(_rb.position+AddVelocity()*Time.deltaTime);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -49,18 +44,9 @@ public class MM_With_Moving_Trigger : MonoBehaviour
             print("ê⁄ë±");
             isOnMoveGround = true;
             otherRigidbody = other.gameObject.GetComponent<MM_Get_Parent_Rigidbody>().rb;
+            oldPosition = otherRigidbody.position;
         }
     }
-    private void OnTriggerStay(Collider other)
-    {
-        if (isOnMoveGround)
-        {
-            addVelocity = otherRigidbody.velocity;
-            originalVelocity = new(test_Player.GetVelocity().x, 0f, 0f);
-
-        }
-    }
-
 
     private void OnTriggerExit(Collider other)
     {
@@ -76,10 +62,20 @@ public class MM_With_Moving_Trigger : MonoBehaviour
     void Init()
     {
         isOnMoveGround = false;
-
-        originalVelocity = Vector3.zero;
         addVelocity = Vector3.zero;
-
         otherRigidbody=null;
+    }
+
+    private void CalcAddVelocity()
+    {
+        //addVelocity = (otherRigidbody.position - oldPosition);
+        addVelocity = (otherRigidbody.position - oldPosition) / Time.deltaTime;
+        addVelocity = new(addVelocity.x, 0f, 0f);
+        oldPosition = otherRigidbody.position;
+    }
+
+    public Vector3 AddVelocity()
+    {
+        return addVelocity;
     }
 }
