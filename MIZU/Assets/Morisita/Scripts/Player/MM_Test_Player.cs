@@ -11,12 +11,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(MM_PlayerPhaseState))]
 public class MM_Test_Player : MonoBehaviour
 {
-    //[SerializeField]
-    //[Header("デバッグモード")]
-    //bool IS_DEBUGMODE = false;
-    //[SerializeField]
-    //TextMeshProUGUI Debug_Phasetext;
-
     [Header("運動ステータス")]
     [SerializeField]
     private float _defaultGravity;
@@ -68,8 +62,8 @@ public class MM_Test_Player : MonoBehaviour
 
         if (_groundCheck == null)
             Debug.LogWarning($"{nameof(_groundCheck)}がアタッチされていません");
-        
-        
+
+        _gameObjectSwitcher.InitSwitch();
         _playerPhaseState.ChangeState(MM_PlayerPhaseState.State.Liquid);
 
 
@@ -81,8 +75,6 @@ public class MM_Test_Player : MonoBehaviour
 
     private void Update()
     {
-        //if (Debug_Phasetext != null)
-        //    Debug_Phasetext.text = "Player:" + _pState.GetState();
         PlayerStateUpdateFunc();
         LimitedSpeed();
         _rbvelocity=_rb.velocity;
@@ -264,13 +256,9 @@ public class MM_Test_Player : MonoBehaviour
         // 空気抵抗を発生させる
         _rb.drag = 10;
 
-
         _velocity = Vector3.zero;
         _rb.velocity = Vector3.zero;
 
-
-        //if (IS_DEBUGMODE)
-        //    return;
         _gameObjectSwitcher.Switch(_playerPhaseState.GetState());
         // モデルを気体のやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.gasModel);
@@ -294,16 +282,10 @@ public class MM_Test_Player : MonoBehaviour
         _velocity = Vector3.zero;
         _rb.velocity = Vector3.zero;
 
-        //_rb.angularVelocity = Vector3.zero;
-
-
-        //if (IS_DEBUGMODE)
-        //    return;
         _gameObjectSwitcher.Switch(_playerPhaseState.GetState());
 
         // モデルを固体のやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.solidModel);
-        //
 
         print("SOLID(固体)になりました");
     }
@@ -327,8 +309,6 @@ public class MM_Test_Player : MonoBehaviour
         _velocity = Vector3.zero;
         _rb.velocity = Vector3.zero;
 
-        //if (IS_DEBUGMODE)
-        //    return;
         _gameObjectSwitcher.Switch(_playerPhaseState.GetState());
 
         // モデルを水のやつに変える処理
@@ -351,13 +331,8 @@ public class MM_Test_Player : MonoBehaviour
         _velocity = Vector3.zero;
         _rb.velocity = Vector3.zero;
 
-        print("SLIME(スライム)になりました");
-
-        //if (IS_DEBUGMODE)
-        //    return;
         // モデルをスライムのやつに変える処理
         _modelSwitcher.SwitchToModel(_modelSwitcher.slimeModel);
-        //
 
         print("SLIME(スライム)になりました");
 
@@ -367,6 +342,11 @@ public class MM_Test_Player : MonoBehaviour
     public int GetPlayerOrientation()
     {
         return _pRotation;
+    }
+
+    public Vector2 GetVelocity()
+    {
+        return _velocity;
     }
 
     public Vector2 GetSpeed()
