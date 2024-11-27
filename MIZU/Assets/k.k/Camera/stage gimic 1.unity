@@ -3616,6 +3616,7 @@ MonoBehaviour:
   targetGroup: {fileID: 606485615}
   player1: {fileID: 1733174245}
   player2: {fileID: 1314371166}
+  weightMax: 10
 --- !u!1001 &618500906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4739,7 +4740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &734959607
 MonoBehaviour:
   m_ObjectHideFlags: 0

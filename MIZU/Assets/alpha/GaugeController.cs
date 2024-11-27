@@ -91,6 +91,7 @@ public class GaugeController : MonoBehaviour
 
     IEnumerator DamageCoroutine(float damage)
     {
+        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         Vector2 currentSize = _gauge.GetComponent<RectTransform>().sizeDelta;
         currentSize.x -= damage;
 
