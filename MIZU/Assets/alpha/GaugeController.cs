@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GaugeController : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class GaugeController : MonoBehaviour
     public float slime = 1;
 
     private bool isDead = false;
+
+    private List<string> allowedTags = new List<string> { "HealSpot", "Ground" };
 
     void Start()
     {
@@ -44,7 +47,7 @@ public class GaugeController : MonoBehaviour
                 // プレイヤー1がヒールスポットに衝突したかチェック
                 foreach (Collider col in _collisionManager.GetPlayer1HitColliders())
                 {
-                    if (col.gameObject.CompareTag("HealSpot"))
+                    if (allowedTags.Contains(col.gameObject.tag))
                     {
                         Heal(100f);  // プレイヤー1の回復量
                         break;
@@ -56,7 +59,7 @@ public class GaugeController : MonoBehaviour
                 // プレイヤー2がヒールスポットに衝突したかチェック
                 foreach (Collider col in _collisionManager.GetPlayer2HitColliders())
                 {
-                    if (col.gameObject.CompareTag("HealSpot"))
+                    if (allowedTags.Contains(col.gameObject.tag))
                     {
                         Heal(100f);  // プレイヤー2の回復量
                         break;

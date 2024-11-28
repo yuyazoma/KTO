@@ -3576,10 +3576,10 @@ MonoBehaviour:
   _HP: 1000
   managerObject: {fileID: 386257747}
   player: 0
-  water: 1
-  ice: 1
-  cloud: 5
-  slime: 1
+  water: 0
+  ice: 0
+  cloud: 10
+  slime: 0
 --- !u!1 &532701772
 GameObject:
   m_ObjectHideFlags: 0
@@ -6557,6 +6557,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Color2
       objectReference: {fileID: 0}
+    - target: {fileID: 4292114060500197287, guid: c7eb95530a3309d49be7c5f51a7bde4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6765237296670914687, guid: c7eb95530a3309d49be7c5f51a7bde4b, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -8164,7 +8168,7 @@ Transform:
   m_GameObject: {fileID: 1193404686}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.439999, y: 5.7066665, z: 0}
+  m_LocalPosition: {x: -7.829998, y: 5.9699993, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9675,7 +9679,7 @@ Transform:
   m_GameObject: {fileID: 1377936943}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1e-45, z: 0, w: 1}
-  m_LocalPosition: {x: -9.439999, y: 6.861367, z: -10}
+  m_LocalPosition: {x: -7.829998, y: 7.1247, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11856,10 +11860,10 @@ MonoBehaviour:
   _HP: 1000
   managerObject: {fileID: 386257747}
   player: 1
-  water: 1
-  ice: 1
-  cloud: 5
-  slime: 1
+  water: 0
+  ice: 0
+  cloud: 10
+  slime: 0
 --- !u!1001 &1762656094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12300,7 +12304,7 @@ Transform:
   m_GameObject: {fileID: 1893302709}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1e-45, z: 0, w: 1}
-  m_LocalPosition: {x: -9.439999, y: 6.861367, z: -10}
+  m_LocalPosition: {x: -7.829998, y: 7.1247, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
