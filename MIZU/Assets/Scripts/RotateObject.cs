@@ -5,15 +5,24 @@ using UnityEngine;
 
 public class RotateObject : MonoBehaviour
 {
-    [SerializeField] private float rotationSpeed = 90f;  //  1•b‚Å‰½“x‰ñ“]‚·‚é‚©
+    [Header("1•b‚Å‰½“x‰ñ“]‚·‚é‚©")]
+    [SerializeField] private float rotationSpeed = 90f;
     [Header("ƒQ[ƒ€ŠJn‚É©“®‚Å‰ñ“]‚ğn‚ß‚é‚æ‚¤‚É‚·‚é‚©")]
     [SerializeField] private bool autoRotating = false;
 
+    //  ‰ñ“]•ûŒü‚É‚Â‚¢‚Ä 1‚ª’ÊíA-1‚ª‹t‰ñ“]
+    private int rotateDirection = 1;
 
     private bool isRotating = false;  //  ‰ñ“]‚Ìƒtƒ‰ƒO
 
     //  ‰ñ“]ó‘Ô‚ª•Ï‰»‚µ‚½Û‚É’Ê’m‚·‚é‚½‚ß‚ÌƒCƒxƒ“ƒg‚ÌéŒ¾
     public event Action<RotateObject, bool> RotatingChange;
+
+    //  Œ»İ‚Ì‰ñ“]•ûŒü‚ğŠO‚©‚çæ“¾‰Â”\‚É‚·‚é
+    public int RotateDirection => rotateDirection;
+
+    //  ƒIƒuƒWƒFƒNƒg‚ªŒ»İ‰ñ“]’†‚©‚Ç‚¤‚©‚ğŠO‚©‚çæ“¾‰Â”\‚É‚·‚é
+    public bool IsRotating => isRotating;
 
     void Start()
     {
@@ -29,23 +38,32 @@ public class RotateObject : MonoBehaviour
         if (isRotating) return;
 
         isRotating = true;
-        RotatingChange?.Invoke(this, true);
-        Debug.Log($"{gameObject.name}: Rotation started.");
+        RotatingChange?.Invoke(this, isRotating);
     }
 
-    //  ‰ñ“]‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ•Ô‚·
-    public bool IsRotating
-    {
-        get { return isRotating; }
-    }
 
     void Update()
     {
         if (isRotating)
         {
-           transform.Rotate(new Vector3(0,rotationSpeed * Time.deltaTime,0));
-            //transform.Rotate(Vector3.back, rotationSpeed * Time.deltaTime);
-
+           transform.Rotate(new Vector3(0, rotationSpeed * Time.deltaTime, 0));
         }
     }
+
+    //  ‰ñ“]•ûŒü‚ğİ’è‚·‚é
+    public void SetRotationDirection(int direction)
+    {
+        if (direction != 1 && direction != -1)
+        {
+            Debug.LogError("‰ñ“]•ûŒü‚Í(’Êí‰ñ“])‚©-1(‹t‰ñ“]‚Ì‚İİ’è‰Â”\B");
+            return;
+        }
+
+        if (rotateDirection != direction)
+        {
+            rotateDirection = direction;
+            RotatingChange?.Invoke(this, isRotating);
+        }
+    }
+
 }
