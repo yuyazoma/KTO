@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReverseRotationButton : BaseButton
+public class ReverseRotationButton : RepressableButton
 {
     [Header("éQè∆Ç∑ÇÈRotateObject")]
     [SerializeField] private RotateObject rotateObject;
