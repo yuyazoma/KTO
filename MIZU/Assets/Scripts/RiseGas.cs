@@ -18,16 +18,15 @@ public class RiseGas : MonoBehaviour
     //  Gasに影響を与えるアクティブなDirectionのリスト
     private List<GasDirection> activeDirections = new List<GasDirection>();
 
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         //  必要なコンポーネントの取得
-        _pState = GetComponent<MM_PlayerPhaseState>();
-
+        
         //  エラーのチェック
-        if (_pState == null)
+        if (!TryGetComponent<MM_PlayerPhaseState>(out _pState))
         {
             Debug.LogError("MM_PlayerPhaseState コンポーネントが見つかりません");
         }
