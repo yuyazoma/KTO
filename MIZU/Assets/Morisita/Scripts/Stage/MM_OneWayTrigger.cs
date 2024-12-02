@@ -6,15 +6,27 @@ public class MM_OneWayTrigger : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    private BoxCollider boxCollider;
+    private MM_PlayerTrigger playerTrigger;
 
-    private void OnTriggerEnter(Collider other)
+    Collider myCollider;
+    Collider hitCollider;
+
+    private void Start()
     {
-        Physics.IgnoreCollision(other,boxCollider,true);
+        myCollider = GetComponent<Collider>();
     }
-
-    private void OnTriggerExit(Collider other)
+    private void Update()
     {
-        Physics.IgnoreCollision(other,boxCollider,false);
+        hitCollider = playerTrigger.GethitCollider();
+
+        if (hitCollider == null || myCollider == null)
+            return;
+
+        if (playerTrigger.GetTrigger())
+        {
+            Physics.IgnoreCollision(hitCollider,myCollider, true);
+        }
+        else
+            Physics.IgnoreCollision(hitCollider, myCollider, false);
     }
 }
