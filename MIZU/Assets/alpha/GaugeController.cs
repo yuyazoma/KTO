@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class GaugeController : MonoBehaviour
+/*public class GaugeController : MonoBehaviour
 {
     [SerializeField] private GameObject _gauge;
     [SerializeField] private int _HP;
@@ -148,4 +148,4 @@ public class GaugeController : MonoBehaviour
         _gauge.GetComponent<RectTransform>().sizeDelta = currentSize;
         yield return null;
     }
-}
+}*/
