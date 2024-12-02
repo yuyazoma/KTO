@@ -8,28 +8,24 @@ public class WaterControl : MonoBehaviour
     public float moveSpeed = 2.0f; // 移動速度
     public bool isAscending = true; // 上昇するか下降するか(Trueなら上がる)
 
-    private bool isDescending = false;
-
     private bool isMoving = false; // 現在移動中かどうか
     private Vector3 targetPosition; // 水の目標位置
-    private Vector3 startPosition; // 移動開始位置
-    private float moveProgress = 0f; // 移動進捗（0～1）
 
     void Update()
     {
         if (isMoving)
         {
-            // 移動進捗を更新
-            moveProgress += Time.deltaTime * moveSpeed;
+            // 現在の位置を目標位置に向けて移動
+            water.transform.position = Vector3.MoveTowards(
+                water.transform.position,
+                targetPosition,
+                moveSpeed * Time.deltaTime
+            );
 
-            // 進捗に基づいて位置を補間
-            water.transform.position = Vector3.Lerp(startPosition, targetPosition, moveProgress);
-
-            // 移動が完了したら停止
-            if (moveProgress >= 1f)
+            // 目標位置に到達したら移動を停止
+            if (Vector3.Distance(water.transform.position, targetPosition) < 0.01f)
             {
                 isMoving = false;
-                moveProgress = 0f;
             }
         }
     }
@@ -38,17 +34,15 @@ public class WaterControl : MonoBehaviour
     {
         if (other.CompareTag("Player") && !isMoving) // 移動中でない場合のみ動作
         {
-            isDescending = false;
-            // 移動開始位置と目標位置を設定
-            startPosition = water.transform.position;
+            // 移動目標位置を設定
             float direction = isAscending ? ascendAmount : -descendAmount;
-            targetPosition = startPosition + new Vector3(0, direction, 0);
+            targetPosition = water.transform.position + new Vector3(0, direction, 0);
 
-            Collider col = this.GetComponent<Collider>();
-            col.enabled = false;
-            isDescending = true;
             // 移動を開始
             isMoving = true;
+
+            // コライダーを一時的に無効化
+            this.GetComponent<Collider>().enabled = false;
         }
     }
 }
