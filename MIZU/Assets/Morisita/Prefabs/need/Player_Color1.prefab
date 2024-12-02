@@ -53,13 +53,14 @@ GameObject:
   - component: {fileID: 4338692582593842970}
   - component: {fileID: 7565571396341381369}
   - component: {fileID: 6052246755116407886}
+  - component: {fileID: 4770366017525694248}
   m_Layer: 9
   m_Name: Player_Color1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8127404912125442723
 Transform:
   m_ObjectHideFlags: 0
@@ -484,6 +485,19 @@ MonoBehaviour:
   otherRigidbody: {fileID: 0}
   isOnMoveGround: 0
   addVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &4770366017525694248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191589095473248152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd84f8d71758d254783718cf7ee5bcd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particle: {fileID: 7966082157522804385, guid: aa62d2984d1825541a36fc6b2d610b11, type: 3}
 --- !u!1 &5265254597551202488
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,7 +897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6795547303835321408, guid: 9fe0d62e4c563ff41abd344c6450d21e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

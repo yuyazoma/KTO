@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MM_Add_Velocity_For_With_Moving : MonoBehaviour
 {
-    // 前とのPositionの差を取ってきた方が正確に動くっぽい？
+    // 前とのPositionの差を取ってきた方が正確に動くっぽい？->MovePositionで解決
     [SerializeField]
     private Rigidbody otherRigidbody;
     [SerializeField]
@@ -14,7 +14,6 @@ public class MM_Add_Velocity_For_With_Moving : MonoBehaviour
     
     Vector3 oldPosition;
     Rigidbody _rb;
-    float power = 20;
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -30,15 +29,12 @@ public class MM_Add_Velocity_For_With_Moving : MonoBehaviour
         if (isOnMoveGround)
         {
             CalcAddVelocity();
-            //_rb.AddForce(otherRigidbody.velocity*(1/Time.fixedDeltaTime), ForceMode.Acceleration);
             //_rb.AddForce(addVelocity.normalized * ((addVelocity.x - _rb.velocity.x) * power), ForceMode.Acceleration);
             _rb.MovePosition(_rb.position+AddVelocity()*Time.deltaTime);
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        print("TriggerName=" + other.name);
-
         if (other.gameObject.CompareTag(MOVE_GROUND))
         {
             print("接続");
@@ -50,7 +46,6 @@ public class MM_Add_Velocity_For_With_Moving : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        print("TriggerName=" + other.name);
         if (other.gameObject.CompareTag(MOVE_GROUND))
         {
             print("解除");
@@ -68,7 +63,6 @@ public class MM_Add_Velocity_For_With_Moving : MonoBehaviour
 
     private void CalcAddVelocity()
     {
-        //addVelocity = (otherRigidbody.position - oldPosition);
         addVelocity = (otherRigidbody.position - oldPosition) / Time.deltaTime;
         addVelocity = new(addVelocity.x, 0f, 0f);
         oldPosition = otherRigidbody.position;
