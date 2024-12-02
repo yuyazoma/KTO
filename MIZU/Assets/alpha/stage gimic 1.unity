@@ -2230,6 +2230,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall
       objectReference: {fileID: 0}
+    - target: {fileID: 2042023225869285003, guid: a92a5607b72094d6d858736b34295677, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042023225869285003, guid: a92a5607b72094d6d858736b34295677, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.790811
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12160,7 +12168,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2042023225869285003, guid: a92a5607b72094d6d858736b34295677, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.8
+      value: -14.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042023225869285003, guid: a92a5607b72094d6d858736b34295677, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14.4
       objectReference: {fileID: 0}
     - target: {fileID: 2042023225869285003, guid: a92a5607b72094d6d858736b34295677, type: 3}
       propertyPath: m_LocalPosition.z
