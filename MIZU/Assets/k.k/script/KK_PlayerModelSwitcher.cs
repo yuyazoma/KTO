@@ -54,13 +54,13 @@ public class KK_PlayerModelSwitcher : MonoBehaviour
     {
         // エフェクトをアクティブにする
         transformationEffect.SetActive(true);
-        Debug.Log("Transformation effect activated.");
+       // Debug.Log("Transformation effect activated.");
 
         // 設定した秒数だけ待つ
         yield return new WaitForSeconds(effectDuration);
 
         // エフェクトを非アクティブにする
         transformationEffect.SetActive(false);
-        Debug.Log("Transformation effect deactivated.");
+       // Debug.Log("Transformation effect deactivated.");
     }
 }
